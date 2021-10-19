@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-
     <router-view/>
+    <main-nav-bar/>
   </div>
 </template>
 
 <script>
-import Index from'@/views/index/Index'
+import MainNavBar from "components/content/mainNavbar/MainNavBar";
 
 export default {
   name: 'App',
   components: {
-    Index
+    MainNavBar,
   }
 }
 </script>
@@ -20,10 +20,19 @@ export default {
   * {
     padding: 0;
     margin: 0;
-    outline: none;
+    border: 0;
+
+    /*文字不能被选中*/
+    /*-webkit-user-select:none;*/
+    /*-moz-user-select:none;*/
+    /*-ms-user-select:none;*/
+    /*user-select:none;*/
   }
 
   body {
-    font-family: PingFang-SC;
+    text-decoration:none;
+    outline: none;
   }
+
+
 </style>
