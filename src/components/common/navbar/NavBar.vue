@@ -10,6 +10,11 @@
 <script>
 export default {
   name: "NavBar",
+  data() {
+    return {
+      i: 0
+    }
+  },
   mounted() {
     // 滚动条的获取
     window.addEventListener('scroll', this.handleScrollx, true)
@@ -29,16 +34,27 @@ export default {
 
 
       if (window.pageYOffset >60) {
-        nav.style.background = "rgba(0,0,0,.4)"
-
-        center1.style.marginTop = "-12rem";
-        center2.style.opacity = 1
-
+        nav.style.background = "rgba(255,255,255,.4)"
+        nav.style.boxShadow = "0 0 .3rem gray"
+        nav.style.color = "black"
       } else {
         nav.style.background = ""
+        nav.style.boxShadow = "0 0 0 #888888"
+        nav.style.color = "#EFEDEC"
 
+      }
+
+
+      var scrollTop = window.pageYOffset
+      var scroll = scrollTop - this.i;
+      this.i = scrollTop;
+      console.log(scrollTop);
+      if (scroll < 0) {
         center1.style.marginTop = "-6rem";
         center2.style.opacity = 0
+      } else {
+        center1.style.marginTop = "-12rem";
+        center2.style.opacity = 1
       }
     }
   }
@@ -55,7 +71,6 @@ export default {
   font-weight: 700;
   color: #EFEDEC;
   transition: .5s;
-
 }
 
 #nav-bar-left {
@@ -81,7 +96,7 @@ export default {
   z-index: 1;
   font-size: 2.4rem;
   text-align: center;
-  cursor: pointer;
+  cursor: url("../../../assets/img/cursor/click.svg"),pointer !important;
   opacity: 0;
 }
 

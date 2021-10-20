@@ -2,7 +2,6 @@
   <div id="index-content" ref="pageMove">
     <slot></slot>
   </div>
-
 </template>
 
 <script>

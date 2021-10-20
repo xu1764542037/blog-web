@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="contributions-box">
     <div class="page">
       <div class="page__current-date"></div>
       <ul class="page__grid grid">
@@ -46,9 +46,22 @@ export default {
 </script>
 
 <style scoped>
-body{background-color: #fff}
+#contributions-box {
+  height: 37rem;
+  width: 88rem;
+  background: white;
+  margin: 5rem auto;
+  border-radius: 1rem;
+  transition: .4s;
+}
+
+#contributions-box:hover {
+  box-shadow: .2rem .2rem 2rem black;
+
+}
+
 .page {
-  padding: 20rem 0;
+  padding: 3rem 0;
   display: -webkit-box;
   display: flex;
   flex-diraction: column;
@@ -219,7 +232,7 @@ body{background-color: #fff}
   position: absolute;
   /*left: -1000px;*/
   /*top: -1000px;*/
-  margin-top: -1rem;
+  margin-top: .2rem;
   -webkit-transform: translate(-50%, -43px);
   transform: translate(-50%, -43px);
   padding: 1rem;

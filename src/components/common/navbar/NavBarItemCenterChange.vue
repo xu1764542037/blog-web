@@ -54,8 +54,8 @@ export default {
     opacity: 0;
     position: relative;
     right: calc(50% - 1.5rem);
-    top: -3.5rem;
-    left: 1%;
+    top: .5rem;
+    left: -31%;
     z-index: 10;
     height: 4.8rem;
     transform: scale(0);

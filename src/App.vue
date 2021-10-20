@@ -24,6 +24,7 @@ export default {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    cursor: url("assets/img/cursor/static.svg"),default;
 
     /*文字不能被选中*/
     /*-webkit-user-select:none;*/

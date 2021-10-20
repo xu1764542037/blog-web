@@ -29,7 +29,6 @@ export default {
     line-height: 4rem;
     font-size: 2.8rem;
     margin-left: 10%;
-    cursor: pointer;
     transition: .4s;
   }
 

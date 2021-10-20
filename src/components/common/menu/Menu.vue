@@ -175,7 +175,6 @@ export default {
   .first,.second {
     list-style:none;
     text-align: center;
-    cursor: pointer;
   }
 
   .first {
@@ -202,6 +201,7 @@ export default {
     font-size: 2.4rem;
     transition: .4s;
     border-radius: 1rem;
+
   }
 
   .first>li:hover {
@@ -233,7 +233,6 @@ export default {
     height: 4.5rem;
     width: 20rem;
     border-radius: 1rem;
-    cursor: pointer;
     transition: .3s;
     margin-left: .5rem;
     margin-right: .5rem;

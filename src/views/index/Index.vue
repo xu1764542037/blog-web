@@ -60,11 +60,11 @@ export default {
   }
 
   #turn-down-icon::before {
-    position: fixed;
+    position: absolute;
     content: url("../../assets/img/index/content/down.svg");
     margin-left: 50%;
     bottom: 40px;
-    cursor: pointer;
+    cursor: url("../../assets/img/cursor/click.svg"),pointer !important;
     animation:move 1.8s infinite;
     -moz-animation:move 1.8s infinite; /* Firefox */
     -webkit-animation:move 1.8s infinite; /* Safari and Chrome */

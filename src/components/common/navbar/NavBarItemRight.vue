@@ -30,7 +30,7 @@ export default {
     border-radius: .8rem;
     line-height: 4rem;
     font-size: 2.2rem;
-    cursor: pointer;
+    cursor: url("../../../assets/img/cursor/click.svg"),pointer !important;
     transition: .4s;
     text-align: center;
     right: 18rem;
@@ -63,7 +63,7 @@ export default {
     right: 5rem;
     transition: .4s;
     text-align: center;
-    cursor: pointer;
+    cursor: url("../../../assets/img/cursor/click.svg"),pointer !important;
 
   }
 
