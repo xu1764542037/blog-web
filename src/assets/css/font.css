@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'chinese';
+    src: url("../font/小熊冻冻奶.ttf");
+}
+
+@font-face {
+    font-family: 'english';
+    src: url("../font/english.ttf");
+}
+
+@font-face {
+    font-family: 'crazy';
+    src: url("../font/Caveat.woff2.ttf");
+}
