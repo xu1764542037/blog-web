@@ -20,14 +20,14 @@ export default {
   .nav-bar-item-left {
     font-family: 'english',sans-serif;
     position: relative;
-    height: 40px;
-    width: 190px;
-    margin-top: 10px;
+    height: 4rem;
+    width: 19rem;
+    margin-top: 1rem;
     text-align: center;
-    border-radius: 5px;
+    border-radius: .5rem;
     z-index: 2;
-    line-height: 40px;
-    font-size: 28px;
+    line-height: 4rem;
+    font-size: 2.8rem;
     margin-left: 10%;
     cursor: pointer;
     transition: .4s;
@@ -38,22 +38,22 @@ export default {
     opacity: 0;
     position: relative;
     right: calc(50% - 15px);
-    top: -35px;
+    top: -3.5rem;
     left: 2%;
-    z-index: 1;
-    height: 48px;
+    z-index: 111;
+    height: 4.8rem;
     transform: scale(0);
-    font-size: 24px;
+    font-size: 2.4rem;
     transition: .2s;
     transition-timing-function: ease-in;
   }
 
    .nav-bar-item-left:hover .blog-name::after {
-     opacity: 1;
+     opacity: 1 ;
    }
 
   .nav-bar-item-left:hover {
-    color: lightcyan;
+    color: lightcyan ;
     background: lightcyan;
   }
 

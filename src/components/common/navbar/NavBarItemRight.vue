@@ -16,18 +16,24 @@ export default {
 </script>
 
 <style scoped>
+  .nav-bar-item-right {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
   #search-all {
-    position: relative;
-    margin-left: 45%;
-    height: 40px;
-    width: 130px;
-    border-radius: 8px;
+    position: absolute;
+    margin-top: .5rem;
+    height: 4rem;
+    width: 13rem;
+    border-radius: .8rem;
+    line-height: 4rem;
+    font-size: 2.2rem;
+    cursor: pointer;
     transition: .4s;
     text-align: center;
-    line-height: 40px;
-    font-size: 22px;
-    float: left;
-    cursor: pointer;
+    right: 18rem;
   }
 
   #search-all:hover {
@@ -35,27 +41,28 @@ export default {
   }
 
   #search-all:hover #search-all:before {
-    margin-top: 2px;
-    margin-right: 7px;
+    margin-top: .2rem;
+    margin-right: .7rem;
     content: url("../../../assets/img/index/search-1.svg") ;
   }
 
   #search-all::before {
-    margin-top: 2px;
-    margin-right: 7px;
+    margin-top: .2rem;
+    margin-right: .7rem;
     content: url("../../../assets/img/index/search-1.svg") ;
   }
 
   #change-color {
-    position: relative;
-    margin-left: 66%;
-    height: 40px;
-    width: 130px;
-    border-radius: 8px;
+    margin-top: .5rem;
+    position: absolute;
+    height: 4rem;
+    width: 13rem;
+    border-radius: .8rem;
+    line-height: 4rem;
+    font-size: 2.2rem;
+    right: 5rem;
     transition: .4s;
     text-align: center;
-    line-height: 40px;
-    font-size: 22px;
     cursor: pointer;
 
   }
@@ -65,8 +72,8 @@ export default {
   }
 
   #change-color::before {
-    margin-top: 2px;
-    margin-right: 7px;
+    margin-top: .2rem;
+    margin-right: .7rem;
     content: url("../../../assets/img/index/light-1.svg") ;
   }
 </style>

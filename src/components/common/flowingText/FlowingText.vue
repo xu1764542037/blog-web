@@ -94,20 +94,20 @@ export default {
 
   .blog-name {
     font-family: 'crazy',sans-serif;
-    font-size: 58px;
+    font-size: 5.8rem;
 
   }
 
   .blog-subtitle {
     position: relative;
     font-family: 'english',sans-serif;
-    font-size: 18px;
+    font-size: 1.8rem;
     top: -15px;
   }
 
   #cursor {
     font-family: "微软雅黑",sans-serif;
-    font-size: 24px;
+    font-size: 2.4rem;
     animation: blink .8s linear infinite;
     /* 其它浏览器兼容性前缀 */
     -webkit-animation: blink .8s linear infinite;
@@ -140,4 +140,6 @@ export default {
     0% { opacity: 1; }
     100% { opacity: 0; }
   }
+
+
 </style>

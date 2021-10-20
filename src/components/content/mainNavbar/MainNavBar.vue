@@ -5,10 +5,15 @@
           LaoXu' Blog
         </nav-bar-item-left>
       </div>
-      <div slot="center">
+      <div slot="center_1">
         <nav-bar-item-center>
           <Menu></Menu>
         </nav-bar-item-center>
+      </div>
+      <div slot="center_2">
+        <nav-bar-item-center-change>
+          <span class="center_2_welcome">欢迎光临老徐的博客</span>
+        </nav-bar-item-center-change>
       </div>
       <div slot="right">
         <nav-bar-item-right>
@@ -23,6 +28,7 @@
 import NavBar from "@/components/common/navbar/NavBar";
 import NavBarItemLeft from "@/components/common/navbar/NavBarItemLeft";
 import NavBarItemCenter from "@/components/common/navbar/NavBarItemCenter";
+import NavBarItemCenterChange from "@/components/common/navbar/NavBarItemCenterChange";
 import Menu from "@/components/common/menu/Menu";
 import NavBarItemRight from "@/components/common/navbar/NavBarItemRight";
 
@@ -32,6 +38,7 @@ export default {
     NavBar,
     NavBarItemLeft,
     NavBarItemCenter,
+    NavBarItemCenterChange,
     NavBarItemRight,
     Menu
   }
@@ -39,5 +46,18 @@ export default {
 </script>
 
 <style scoped>
+.center_2_welcome::before {
+  position: relative;
+  content: url("../../../assets/img/index/menu/pao.svg");
+  left: -.3rem;
+  top: .3rem;
+}
+
+.center_2_welcome::after {
+  position: relative;
+  content: url("../../../assets/img/index/menu/ball.svg");
+  left: .3rem;
+  top: .3rem;
+}
 
 </style>
