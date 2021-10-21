@@ -209,7 +209,7 @@ export default {
   }
 
   .first>li:hover .firstLi {
-    background: lightcyan;
+    background: #87CFE3;
     border-radius: .8rem;
   }
 
@@ -231,6 +231,7 @@ export default {
   .second>li {
     position: relative;
     height: 4.5rem;
+    line-height: 4.5rem;
     width: 20rem;
     border-radius: 1rem;
     transition: .3s;
@@ -240,7 +241,7 @@ export default {
   }
 
   .second>li:hover {
-    background: lightcyan;
+    background: #87CFE3;
     color: #2c2c2c;
   }
 

@@ -40,10 +40,9 @@ export default {
 
   #to-top {
     position: relative;
-    width: 20%;
+    width: 34rem;
     height: 4rem;
-    margin-left: 40%;
-    margin-top: -6rem;
+    margin: -6rem auto;
     border-radius: .8rem;
     transition: .4s;
     line-height: 4rem;
@@ -51,11 +50,10 @@ export default {
 
   .goTop::after {
     content: url("../../../assets/img/index/menu/head.svg");
-    opacity: 0;
-    position: relative;
+    position: absolute;
+    display: block;
     right: calc(50% - 1.5rem);
     top: .5rem;
-    left: -31%;
     z-index: 10;
     height: 4.8rem;
     transform: scale(0);
@@ -65,24 +63,41 @@ export default {
   }
 
   #to-top:hover .goTop:after{
-    opacity: 1;
+    transform: scale(1);
   }
 
   #to-top:hover {
-    background: lightcyan;
-    color: lightcyan;
+    background: #87CFE3;
+    color: #87CFE3;
   }
 
   #my-blog {
-    position: absolute;
-    width: 24%;
+    position: relative;
+    width: 40rem;
     height: 6rem;
-    margin-left: 38%;
-    margin-top: 1rem;
+    margin: 8rem auto;
     line-height: 6rem;
-    background: lightcyan;
+    background: #87CFE3;
     color: #2c2c2c;
     border-radius: .8rem;
     display: none;
+  }
+
+  @media screen and (max-width: 1366px) {
+    #to-top {
+      position: relative;
+      width: 34rem;
+      height: 4rem;
+      margin: -4.7rem auto;
+      border-radius: .8rem;
+      transition: .4s;
+      line-height: 4rem;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    #nav-bar-item-center-change {
+      display: none;
+    }
   }
 </style>

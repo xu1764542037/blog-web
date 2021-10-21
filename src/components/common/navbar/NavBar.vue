@@ -27,13 +27,13 @@ export default {
     handleScrollx() {
       // console.log('滚动高度', window.pageYOffset)
       // console.log('距离顶部高度', this.$refs.obtainTop.getBoundingClientRect().top)
-      const nav = document.getElementById("nav-bar")
 
+      const nav = document.getElementById("nav-bar")
       const center1 = document.getElementById("nav-bar-center-1")
       const center2 = document.getElementById("nav-bar-center-2")
 
 
-      if (window.pageYOffset >60) {
+      if (window.pageYOffset > 60) {
         nav.style.background = "rgba(255,255,255,.4)"
         nav.style.boxShadow = "0 0 .3rem gray"
         nav.style.color = "black"
@@ -41,14 +41,12 @@ export default {
         nav.style.background = ""
         nav.style.boxShadow = "0 0 0 #888888"
         nav.style.color = "#EFEDEC"
-
       }
 
 
       var scrollTop = window.pageYOffset
       var scroll = scrollTop - this.i;
       this.i = scrollTop;
-      console.log(scrollTop);
       if (scroll < 0) {
         center1.style.marginTop = "-6rem";
         center2.style.opacity = 0
@@ -77,7 +75,6 @@ export default {
   position: relative;
   width: 20%;
   height: 100%;
-
 }
 
 #nav-bar-center-1 {
@@ -89,7 +86,6 @@ export default {
   float: left;
   z-index: 2;
   transition: .4s;
-
 }
 
 #nav-bar-center-2 {
@@ -107,6 +103,46 @@ export default {
   margin-left: 80%;
   margin-top: -4rem;
   float: left;
-
 }
+
+@media screen and (max-width: 1024px) {
+  #nav-bar-center-1 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  #nav-bar-center-1 {
+    position: absolute;
+    margin-left: 25.5%;
+    width: 55%;
+    height: 100%;
+    margin-top: -4.7rem;
+    float: left;
+    z-index: 2;
+    transition: .4s;
+  }
+}
+
+  @media screen and (max-width: 1024px) {
+    #nav-bar-center-1 {
+      position: absolute;
+      margin-left: 11.5%;
+      width: 75%;
+      height: 100%;
+      margin-top: -6rem;
+      float: left;
+      z-index: 2;
+      transition: .4s;
+    }
+  }
+
+  @media screen and (max-width: 440px) {
+    #nav-bar-center-1 {
+      display: none;
+    }
+  }
+
+
+
 </style>

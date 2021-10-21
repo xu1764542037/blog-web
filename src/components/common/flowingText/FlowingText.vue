@@ -3,7 +3,7 @@
     <span class="blog-name"><slot name="blog_name"></slot></span>
     <span class="blog-subtitle">
       {{content}}
-      <span id="cursor">|</span>
+      <p id="cursor">|</p>
     </span>
   </div>
 </template>
@@ -80,22 +80,21 @@ export default {
 </script>
 
 <style scoped>
-  .flowing-text {
-    color: #EFEDEC;
-  }
+
 
   .flowing-text {
     height: 120px;
     width: 600px;
     margin: 21% auto;
     text-align: center;
-    color: white;
+    position: relative;
+    color: #EFEDEC;
+    top: 43%;
   }
 
   .blog-name {
     font-family: 'crazy',sans-serif;
     font-size: 5.8rem;
-
   }
 
   .blog-subtitle {
@@ -139,6 +138,22 @@ export default {
   @-o-keyframes blink {
     0% { opacity: 1; }
     100% { opacity: 0; }
+  }
+
+  @media screen and (max-width: 420px) {
+    .flowing-text {
+      height: 120px;
+      width: 100%;
+      margin: 21% auto;
+      text-align: center;
+      position: relative;
+      color: #EFEDEC;
+      top: 43%;
+    }
+
+    #cursor {
+      display: initial;
+    }
   }
 
 

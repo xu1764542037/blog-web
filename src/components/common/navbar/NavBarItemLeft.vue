@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-bar-item-left">
+  <div class="nav-bar-item-left" @click="test">
     <div class="blog-name">
       <slot></slot>
     </div>
@@ -11,6 +11,11 @@ export default {
   name: "NavBarItemLeft",
   data() {
     return {
+    }
+  },
+  methods:{
+    test() {
+      // alert(1)
     }
   }
 }
@@ -34,13 +39,15 @@ export default {
 
     .blog-name::after {
     content: url("../../../assets/img/index/index.svg");
-    opacity: 0;
-    position: relative;
+    opacity: 1;
+    position: absolute;
     right: calc(50% - 15px);
-    top: -3.5rem;
-    left: 2%;
+    top: .3rem;
+    left: 37%;
+    display: inline-block;
     z-index: 111;
     height: 4.8rem;
+    width: 5rem;
     transform: scale(0);
     font-size: 2.4rem;
     transition: .2s;
@@ -48,13 +55,65 @@ export default {
   }
 
    .nav-bar-item-left:hover .blog-name::after {
-     opacity: 1 ;
+     content: url("../../../assets/img/index/index.svg");
+     opacity: 1;
+     position: absolute;
+     right: calc(50% - 15px);
+     top: .3rem;
+     left: 37%;
+     display: inline-block;
+     z-index: 111;
+     height: 4.8rem;
+     width: 5rem;
+     transform: scale(1);
+     font-size: 2.4rem;
+     transition: .2s;
+     transition-timing-function: ease-in;
    }
 
   .nav-bar-item-left:hover {
-    color: lightcyan ;
-    background: lightcyan;
+    color: #87CFE3 ;
+    background: #87CFE3;
   }
 
+  @media screen and (max-width: 420px) {
+    .nav-bar-item-left {
+      font-family: 'english',sans-serif;
+      position: relative;
+      height: 4rem;
+      width: 19rem;
+      margin-top: 1rem;
+      text-align: center;
+      border-radius: .5rem;
+      z-index: 2;
+      line-height: 4rem;
+      font-size: 2.2rem;
+      margin-left: 10%;
+      transition: .4s;
+    }
+
+    .blog-name::after {
+      display: none;
+    }
+
+  }
+
+  @media screen and (max-width: 1366px) {
+    .nav-bar-item-left {
+      font-family: 'english',sans-serif;
+      position: absolute;
+      height: 4rem;
+      width: 19rem;
+      margin-top: 1rem;
+      text-align: center;
+      border-radius: .5rem;
+      z-index: 2;
+      line-height: 4rem;
+      font-size: 2.2rem;
+      margin-left: 10%;
+      transition: .4s;
+    }
+
+  }
 
 </style>

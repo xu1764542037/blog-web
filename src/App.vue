@@ -2,16 +2,20 @@
   <div id="app">
     <router-view/>
     <main-nav-bar/>
+    <web-bg></web-bg>
   </div>
 </template>
 
 <script>
 import MainNavBar from "components/content/mainNavbar/MainNavBar";
+import WebBg from "@/views/webBg/WebBg";
+
 
 export default {
   name: 'App',
   components: {
     MainNavBar,
+    WebBg
   }
 }
 </script>
@@ -40,6 +44,19 @@ export default {
   body {
     text-decoration:none;
     outline: none;
+  }
+
+  #app {
+    position: absolute;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("./assets/img/index/content/2.jpg");
+    min-height: 100%;
+    width: 100%;
+    background-attachment: fixed;
+    z-index: 1;
+    opacity: 1;
   }
 
   /*滚动条样式*/

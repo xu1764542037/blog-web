@@ -20,6 +20,21 @@
       </ul>
     </div>
     <div class="tooltip"></div>
+    <div class="last-year table-column">
+      <p class="column-name">过去一年摸鱼次数</p>
+      <p class="column-num">328</p>
+      <p class="column-time">{{lastYear}} - {{today}}</p>
+    </div>
+    <div class="last-month table-column">
+      <p class="column-name">过去一月摸鱼次数</p>
+      <p class="column-num">30</p>
+      <p class="column-name">{{lastMonth}} - {{today}}</p>
+    </div>
+    <div class="last-week table-column">
+      <p class="column-name">过去一周摸鱼次数</p>
+      <p class="column-num">5</p>
+      <p class="column-time">{{lastWeek}} - {{today}}</p>
+    </div>
   </div>
 </template>
 
@@ -30,7 +45,11 @@ export default {
   name: "ContributionsTable",
   data() {
     return {
-      liNum: 370
+      liNum: 370,
+      today: '',
+      lastYear: '',
+      lastMonth: '',
+      lastWeek: ''
     }
   },
   mounted() {
@@ -41,18 +60,83 @@ export default {
     },err => {
       // console.log(err);
     })
+
+    var date1 = new Date();
+    //今天时间
+    var time1 = date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate()
+    this.today = time1
+    var date2 = new Date(date1);
+    date2.setDate(date1.getDate() - 7);
+    this.lastWeek = date2.getFullYear() + "-" + (date2.getMonth() + 1) + "-" + date2.getDate();
+    date2.setDate(date1.getDate() - 30);
+    this.lastMonth = date2.getFullYear() + "-" + (date2.getMonth() + 1) + "-" + date2.getDate();
+    date2.setDate(date1.getDate() - 365);
+    this.lastYear = date2.getFullYear() + "-" + (date2.getMonth() + 1) + "-" + date2.getDate();
   }
 }
 </script>
 
 <style scoped>
+.table-column {
+  text-align: center;
+}
+
+.column-name {
+  font-size: 12px;
+  margin-top: .5rem;
+
+}
+
+.column-num {
+  font-size: 24px;
+  font-weight: 100;
+  margin-top: 1rem;
+
+}
+
+.column-time {
+  font-size: 14px;
+  margin-top: .5rem;
+}
+
+.last-year {
+  min-height: 12rem;
+  width: 33.4%;
+  border-top: 1px dashed black;
+  border-right: 1px dashed black;
+  float: left;
+}
+
+.last-month {
+  min-height: 12rem;
+  width: 33.3%;
+  border-top: 1px dashed black;
+  border-right: 1px dashed black;
+  margin-left: 33.4%;
+}
+
+.last-week {
+  min-height: 12rem;
+  width: 33.3%;
+  border-top: 1px dashed black;
+  margin-left: 66.7%;
+  margin-top: -12rem;
+}
+
 #contributions-box {
-  height: 37rem;
-  width: 88rem;
+  height: 32rem;
+  max-width: 100%;
+  width: 1000px;
   background: white;
-  margin: 5rem auto;
+  margin: 6rem auto;
   border-radius: 1rem;
   transition: .4s;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 
 #contributions-box:hover {
@@ -66,8 +150,8 @@ export default {
   display: flex;
   flex-diraction: column;
   -webkit-box-pack: center;
-  justify-content: center;
   -webkit-box-align: center;
+  justify-content: center;
   align-items: center;
 }
 
@@ -99,6 +183,7 @@ export default {
 }
 .grid__footer {
   width: 100%;
+  margin-top: 2rem;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: end;
@@ -232,7 +317,6 @@ export default {
   position: absolute;
   /*left: -1000px;*/
   /*top: -1000px;*/
-  margin-top: .2rem;
   -webkit-transform: translate(-50%, -43px);
   transform: translate(-50%, -43px);
   padding: 1rem;

@@ -1,13 +1,23 @@
 <template>
   <div id="index-content" ref="pageMove">
-    <slot></slot>
+    <contributions-table></contributions-table>
+    <contributions-table></contributions-table>
+    <contributions-table></contributions-table>
+    <contributions-table></contributions-table>
+
+
   </div>
 </template>
 
 <script>
+import ContributionsTable from "@/components/common/contributions/ContributionsTable";
+
 
 export default {
   name: "IndexContent",
+  components: {
+  ContributionsTable
+  },
   mounted() {
     // 滚动条的获取
     window.addEventListener('scroll', this.handleScrollx, true)
@@ -18,16 +28,7 @@ export default {
   },
   methods: {
     handleScrollx() {
-      // console.log('滚动高度', window.pageYOffset)
-      // console.log('距离顶部高度', this.$refs.obtainTop.getBoundingClientRect().top)
 
-      const page = document.getElementById("index-content")
-      if (window.pageYOffset > 0) {
-        page.style.opacity = "1"
-      } else {
-        page.style.opacity = "0"
-
-      }
     }
   }
 }
@@ -35,16 +36,17 @@ export default {
 
 <style scoped>
 #index-content {
-  position: absolute;
-  margin-top: .8%;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("../../../assets/img/index/content/2.jpg");
-  min-height: 100vh;
-  width: 100%;
-  background-attachment: fixed;
   z-index: 1;
-  opacity: 0;
+  display: flex;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  margin: 0 auto;
+  padding: 2rem 15px;
+  max-width: 1200px;
+  width: 100%;
+  flex-direction: column;
 }
+
+
+
 </style>
