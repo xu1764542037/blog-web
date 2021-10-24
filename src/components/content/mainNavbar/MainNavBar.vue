@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import NavBar from "@/components/common/navbar/NavBar";
-import NavBarItemLeft from "@/components/common/navbar/NavBarItemLeft";
-import NavBarItemCenter from "@/components/common/navbar/NavBarItemCenter";
-import NavBarItemCenterChange from "@/components/common/navbar/NavBarItemCenterChange";
-import Menu from "@/components/common/menu/Menu";
-import NavBarItemRight from "@/components/common/navbar/NavBarItemRight";
+import NavBar from "@/components/common/indexFirstPage/navbar/NavBar";
+import NavBarItemLeft from "@/components/common/indexFirstPage/navbar/NavBarItemLeft";
+import NavBarItemCenter from "@/components/common/indexFirstPage/navbar/NavBarItemCenter";
+import NavBarItemCenterChange from "@/components/common/indexFirstPage/navbar/NavBarItemCenterChange";
+import Menu from "@/components/common/indexFirstPage/menu/Menu";
+import NavBarItemRight from "@/components/common/indexFirstPage/navbar/NavBarItemRight";
 
 export default {
   name: "MainNavBar",

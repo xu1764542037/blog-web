@@ -12,3 +12,8 @@
     font-family: 'crazy';
     src: url("../font/Caveat.woff2.ttf");
 }
+
+@font-face {
+    font-family: 'PingFangSC';
+    src: url("../font/PingFangSC.ttf");
+}

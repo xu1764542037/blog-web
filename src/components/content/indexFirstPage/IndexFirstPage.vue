@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import FlowingText from "@/components/common/flowingText/FlowingText";
+import FlowingText from "@/components/common/indexFirstPage/flowingText/FlowingText";
 
 export default {
   name: "IndexFirstPage",
@@ -54,22 +54,6 @@ export default {
   -webkit-background-image: url("../../../assets/img/index/indexBG.jpg");
 }
 
-@media screen and (max-width: 1366px) {
-  #Index-first-page {
-    position: relative;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url("../../../assets/img/index/indexBG.jpg");
-    height: 100vh;
-    width: 100%;
-    margin-top: -21%;
-    background-attachment: local;
-    -webkit-background-size: cover;
-    -webkit-background-image: url("../../../assets/img/index/indexBG.jpg");
-  }
-
-}
 
 #turn-down-icon::before {
   position: absolute;
@@ -91,4 +75,20 @@ export default {
   100% {bottom: 40px;opacity: .8;}
 }
 
+@media screen and (max-width: 1366px) {
+  #Index-first-page {
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../../../assets/img/index/indexBG.jpg");
+    height: 100vh;
+    width: 100%;
+    margin-top: -21%;
+    background-attachment: local;
+    -webkit-background-size: cover;
+    -webkit-background-image: url("../../../assets/img/index/indexBG.jpg");
+  }
+
+}
 </style>

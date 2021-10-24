@@ -3,6 +3,8 @@
     <router-view/>
     <main-nav-bar/>
     <web-bg></web-bg>
+    <wave-item></wave-item>
+<!--    <slide></slide>-->
   </div>
 </template>
 
@@ -11,11 +13,22 @@ import MainNavBar from "components/content/mainNavbar/MainNavBar";
 import WebBg from "@/views/webBg/WebBg";
 
 
+import Slide from "@/components/common/special/slide/Slide";
+
+import WaveItem from "@/components/common/special/Click/WaveItem";
+
+
+
 export default {
   name: 'App',
   components: {
     MainNavBar,
-    WebBg
+    WebBg,
+    Slide,
+    WaveItem,
+  },
+  mounted() {
+    console.log(window.screenTop);
   }
 }
 </script>
@@ -44,6 +57,7 @@ export default {
   body {
     text-decoration:none;
     outline: none;
+    overflow-x: hidden;
   }
 
   #app {

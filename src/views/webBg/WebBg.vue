@@ -12,6 +12,7 @@ export default {
 
 <style scoped>
 #web-bg {
+  z-index: 1;
   /*position: fixed;*/
   min-height: 100%;
   width: 100%;
