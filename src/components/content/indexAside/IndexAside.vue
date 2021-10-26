@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import Phone from "@/components/common/indexAside/phone/Phone";
-import Update from "@/components/common/indexAside/update/Update";
-import NewComment from "@/components/common/indexAside/newComment/NewComment";
-import Classify from "@/components/common/indexAside/classify/Classify";
-import Label from "@/components/common/indexAside/label/Label";
-import History from "@/components/common/indexAside/history/History";
-import Census from "@/components/common/indexAside/census/Census";
+import Phone from "@/components/common/aside/phone/Phone";
+import Update from "@/components/common/aside/update/Update";
+import NewComment from "@/components/common/aside/newComment/NewComment";
+import Classify from "@/components/common/aside/classify/Classify";
+import Label from "@/components/common/aside/label/Label";
+import History from "@/components/common/aside/history/History";
+import Census from "@/components/common/aside/census/Census";
 
 export default {
   name: "IndexAside",
@@ -37,6 +37,7 @@ export default {
 
 <style scoped>
   #index-aside {
+    position: relative;
     width: 30%;
   }
 
@@ -52,7 +53,7 @@ export default {
     flex-direction: column;
     position: sticky;
     position: -webkit-sticky;
-    top: 70px;
+    top: 7rem;
     -webkit-transition: top .3s;
     -moz-transition: top .3s;
     -o-transition: top .3s;

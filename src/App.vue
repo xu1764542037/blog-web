@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <router-view/>
-    <main-nav-bar/>
-    <web-bg></web-bg>
+    <main-nav-bar v-show="navShow"></main-nav-bar>
+    <web-bg v-show="bgShow"></web-bg>
     <wave-item></wave-item>
 <!--    <slide></slide>-->
   </div>
@@ -27,8 +27,11 @@ export default {
     Slide,
     WaveItem,
   },
-  mounted() {
-    console.log(window.screenTop);
+  data() {
+    return {
+      navShow:true,
+      bgShow: true
+    }
   }
 }
 </script>
@@ -65,7 +68,7 @@ export default {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("./assets/img/index/content/2.jpg");
+    /*background-image: url("./assets/img/index/content/2.jpg");*/
     min-height: 100%;
     width: 100%;
     background-attachment: fixed;
@@ -73,7 +76,11 @@ export default {
     opacity: 1;
   }
 
-  /*滚动条样式*/
+  ::selection {
+    background: #409EFF;
+  }
+
+    /*滚动条样式*/
   body::-webkit-scrollbar {
     width: 10px;
     /*height: 4px;*/

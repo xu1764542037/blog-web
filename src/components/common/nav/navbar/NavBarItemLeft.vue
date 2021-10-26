@@ -1,6 +1,6 @@
 <template>
-  <div class="nav-bar-item-left" @click="test">
-    <div class="blog-name">
+  <div class="nav-bar-item-left">
+    <div class="blog-name" @click="goIndex">
       <slot></slot>
     </div>
   </div>
@@ -14,8 +14,8 @@ export default {
     }
   },
   methods:{
-    test() {
-      // alert(1)
+    goIndex() {
+      this.$router.push({path: "/index"})
     }
   }
 }

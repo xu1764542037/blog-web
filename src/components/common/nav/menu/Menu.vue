@@ -6,7 +6,7 @@
           <a class="menus">{{FirstName.firstName}}</a>
         </div>
           <ul class="second">
-            <li v-for="(SecondName,index) in FirstName.secondName">
+            <li v-for="(SecondName,index) in FirstName.secondName" @click="go(SecondName.url)">
               <img :src="SecondName.img">
               <a class="menus-items">{{SecondName.name}}</a>
             </li>
@@ -130,7 +130,7 @@ export default {
           secondName: [
             {
               name: "时光机",
-              url: "/time",
+              url: "/article",
               img: require('@/assets/img/index/menu/time.svg'),
 
             },
@@ -157,6 +157,11 @@ export default {
           ]
         },
       ],
+    }
+  },
+  methods: {
+    go(path) {
+      this.$router.replace({path: path})
     }
   }
 }

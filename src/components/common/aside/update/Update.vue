@@ -73,7 +73,6 @@ export default {
       if (this.$refs.obtainTop.getBoundingClientRect().top<940 && this.$refs.obtainTop.getBoundingClientRect().top>-400) {
         this.marginLeft = "0"
       }
-
     },
     getStyle() {
       return {

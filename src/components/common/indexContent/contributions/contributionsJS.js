@@ -39,7 +39,7 @@
       cell.addEventListener('mouseover', () => {
         const coords = cell.getBoundingClientRect();
         const commit = cell.getAttribute('data-commit');
-        const date = cell.getAttribute('data-date');
+        const date = cell.getAttribute('data-data');
 
         openTooltip({
           x: coords.x + coords.width / 2,
@@ -136,7 +136,7 @@
           }
 
           gridCell[counter].setAttribute('data-commit', commit.str);
-          gridCell[counter].setAttribute('data-date', date);
+          gridCell[counter].setAttribute('data-data', date);
 
           counter++;
         }
@@ -149,7 +149,7 @@
         commit = getContributionsObj(counter, false);
 
         gridCell[counter].setAttribute('data-commit', commit.str);
-        gridCell[counter].setAttribute('data-date', date);
+        gridCell[counter].setAttribute('data-data', date);
 
         counter++;
       }

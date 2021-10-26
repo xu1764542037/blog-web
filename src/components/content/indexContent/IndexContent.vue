@@ -211,7 +211,6 @@ export default {
 
 <style scoped>
 #index-content {
-  width: 70%;
   transition: all 0.4s ease 0s;
 }
 

@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       isShow: false,
-      right: '-3%',
+      left: '98.5',
     }
   },
   mounted() {
@@ -42,14 +42,14 @@ export default {
     },
     handleScrollx() {
       if (window.pageYOffset>100) {
-        this.right = ".2%"
+        this.left = "96%"
       } else {
-        this.right = "-3%"
+        this.left = "99.5%"
       }
     },
     getStyle() {
       return {
-        right: this.right
+        left: this.left
       }
     },
   }
@@ -59,7 +59,8 @@ export default {
 <style scoped>
 .display-and-top {
   position: fixed;
-  right: .2%;
+  /*right: -.2%;*/
+  left: 98.5%;
   top: 55%;
   height: 10rem;
   width: 6rem;
