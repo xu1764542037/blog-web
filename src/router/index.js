@@ -8,6 +8,8 @@ const Posts = () => import("@/views/posts/Posts")
 
 //后台页面
 const Base = () =>import("@/views/base/Base")
+//验证页面
+const Verification = () => import("@/views/base/Verification")
 
 const Home = () =>import("@/views/base/home/Home")
 const Info = () =>import("@/views/base/user/info/Info")
@@ -27,11 +29,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '',
-    redirect: '/base',
+    redirect: '/index',
   },
   {
     path: '*',
-    redirect: '/base',
+    redirect: '/index',
   },
   {
     path: '/index',
@@ -42,49 +44,80 @@ const routes = [
     component: Article
   },
   {
-    path: '/posts',
+    path: '/posts/:id',
     component: Posts
   },
   {
     path: '/base',
     component: Base,
-    redirect: '/base/home',
+    redirect: '/base/verification',
     children: [
       {
+        path: 'verification',
+        component: Verification,
+      },
+      {
         path: 'home',
-        component: Home
+        component: Home,
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: 'UserInfo',
-        component: Info
+        component: Info,
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: 'UserComment',
-        component: Comment
+        component: Comment,
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: "WriterBlog",
-        component: WriteBlog
+        component: WriteBlog,
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: "SeeBlog",
-        component: SeeBlog
+        component: SeeBlog,
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: "label",
-        component: Label
+        component: Label,
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: "type",
-        component: Type
+        component: Type,
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: "BlogData",
-        component: data
+        component: data,
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: "BlogsData",
-        component: datas
+        component: datas,
+        meta: {
+          requireAuth: true
+        }
       },
     ]
   }
@@ -95,6 +128,25 @@ const router = new VueRouter({
   routes,
   mode: 'history'
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) { // 判断该路由是否需要登录权限
+    if (sessionStorage.getItem("token") == 'true') { // 判断本地是否存在token
+      next()
+    } else {
+      // 未登录,跳转到登陆页面
+      next({
+        path: '/base/verification'
+      })
+    }
+  } else {
+    if(sessionStorage.getItem("token") == 'true'){
+      next('/index/table');
+    }else{
+      next();
+    }
+  }
+});
 
 
 export default router

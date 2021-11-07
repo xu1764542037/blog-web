@@ -28,7 +28,8 @@ export default {
   },
   methods: {
     goTop() {
-      let top = document.documentElement.scrollTop || document.body.scrollTop;
+      // alert(1)
+      let top =  document.body.scrollTop;
       const timeTop = setInterval(() => {
         document.body.scrollTop = document.documentElement.scrollTop = top -= 40;
         if (top <= 1) {
@@ -60,7 +61,7 @@ export default {
 .display-and-top {
   position: fixed;
   /*right: -.2%;*/
-  left: 98.5%;
+  left: 99.5%;
   top: 55%;
   height: 10rem;
   width: 6rem;
@@ -80,6 +81,12 @@ export default {
   font-size: 1.9rem;
   text-align: center;
   cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .go-top:hover {
@@ -115,6 +122,11 @@ export default {
   margin-left: .8rem;
   margin-top: .6rem;
   cursor: pointer;
+}
 
+@media screen and (max-width: 440px) {
+  .display-and-top {
+    display: none;
+  }
 }
 </style>

@@ -5,9 +5,9 @@
     </div>
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home' }">后台管理</el-breadcrumb-item>
         <el-breadcrumb-item>博客管理</el-breadcrumb-item>
-        <el-breadcrumb-item><a href="/base/WriterBlog">活动列表</a></el-breadcrumb-item>
+        <el-breadcrumb-item><a href="/base/WriterBlog">发布博客</a></el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <page-edit-panel></page-edit-panel>

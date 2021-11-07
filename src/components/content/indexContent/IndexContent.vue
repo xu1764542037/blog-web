@@ -3,7 +3,14 @@
     <contributions-table></contributions-table>
     <notice></notice>
     <carousel></carousel>
-    <page v-for="item in pages" :page="item"></page>
+    <page v-for="(item,index) in posts" :imgs="imgs" :index="index" :page="item"></page>
+    <el-pagination
+        class="index-pagination"
+        background
+        layout="prev, pager, next"
+        @current-change="handleCurrentChange"
+        :total="postNum">
+    </el-pagination>
   </div>
 </template>
 
@@ -12,6 +19,7 @@ import ContributionsTable from "@/components/common/indexContent/contributions/C
 import Notice from "@/components/common/indexContent/notice/Notice";
 import Carousel from "@/components/common/indexContent/carousel/Carousel";
 import Page from "@/components/common/indexContent/page/Page";
+import {selectAllArticle, selectByPage} from "@/network/article/article";
 
 export default {
   name: "IndexContent",
@@ -24,187 +32,76 @@ export default {
   data() {
     return {
       noticeIsShow: false,
-      pages: [
+      imgs: [
         {
           img: require('@/assets/img/index/content/page/2.jpg'),
-          name: '秃头了怎么办？每个人都会秃头吗？有没有什么好办法可以解决秃头的问题啊？',
-          title: '脱发是皮肤科的常见疾病，其中雄激素性脱发和斑秃是常见的脱发类型。' +
-              '治疗方法包括口服药、局部外用药，一般推荐联合治疗。对于雄激素性脱发的男性患者，建议口服非那雄胺，部分女性患者可以使用螺内酯。' +
-              '外用药上建议使用米诺地尔，同时还可以配合毛发移植、自体血小板血浆注射等手段。对于斑秃患者，大多数轻症的可以在六个月内自然痊愈。',
-          time: '2021-10-14',
-          label: [
-            "健康"
-          ],
-          commentNum: 3
         },
         {
           img: require('@/assets/img/index/content/page/3.jpg'),
-          name: '怎么提高睡眠质量',
-          title: '提高睡眠质量可以从以下几个方面做起：1、注意睡眠卫生，睡眠，卫生，包括睡眠环境，比如卧室当中的温度，湿度，光线，声音以及寝具舒适性。' +
-              '2、其次，晚饭不要吃得过饱，不要饮用兴奋性物质的饮料，例如酒精，浓茶，咖啡，功能性饮料，入睡前三小时不要做过于激烈的运动。' +
-              '3、心理治疗，因为大部分失眠和情绪有一定的关系，所以心理治疗对睡眠的改善是有很大作用的，尤其对平时工作压力很大，容易焦虑人来说，心理疏导，对睡眠有一定的帮助。' +
-              '4、必要时可以给予相关的药物进行干预。',
-          time: '2021-10-16',
-          label: [
-            "健康"
-          ],
-          commentNum: 1
         },
         {
           img: require('@/assets/img/index/content/page/7.jpg'),
-          name: '英语烂梗、谐音梗、土味情话收集',
-          title: '有一天下班，我和同事珊珊一起往地铁站走,珊珊问我：”我们打车还是走路或者你会骑单车吗？”我意味深长的说：“走路吧，我想牵着你的手走一会儿”,' +
-              '珊珊害羞的笑了：“你这土味情话绝了”,我说：“还想听吗？”,她兴奋的说：“想啊，想啊，虽然土，但是好听啊！”,我缓缓的抬起头：“你知道你为什么叫珊珊吗？”' +
-              '珊珊：“为什么？”我牵起她的手说：“因为上天注定你在我的世界姗姗来迟。”',
-          time: '2021-10-20',
-          label: [
-            "笑嘻嘻","英语"
-          ],
-          commentNum: 10
         },
         {
           img: require('@/assets/img/index/content/page/16.jpg'),
-          name: 'Vue前端开发笔记',
-          title: '之前一直采用VS进行各种前端后端的开发，随着项目的需要，正逐步融合纯前端的开发模式，开始主要选型为Vue + Element 进行BS前端的开发，' +
-              '后续会进一步整合Vue + AntDesign的界面套件，作为两种不同界面框架的展现方式。' +
-              '采用Vue + Element 的前端开发和之前的开发模式需要有较大的转变，以及需要接触更多的相关知识，本系列随笔基于循序渐进的学习研究方式，' +
-              '对使用Vue + Element 这种前端开发的各个方面进行一个完整的介绍，并结合我对BS前端已有的框架功能，进行两者的融合。' +
-              '本篇随笔主要介绍开发环境的准备工作，包括需要准备好相关的开发工具，插件辅助等，以及对开发保存的自动修正处理，调试的配置的内容等。',
-          time: '2021-10-23',
-          label: [
-            "学习","Vue"
-          ],
-          commentNum: 53
         },
         {
-          img: require('@/assets/img/index/content/page/2.jpg'),
-          name: '秃头了怎么办？每个人都会秃头吗？有没有什么好办法可以解决秃头的问题啊？',
-          title: '脱发是皮肤科的常见疾病，其中雄激素性脱发和斑秃是常见的脱发类型。' +
-              '治疗方法包括口服药、局部外用药，一般推荐联合治疗。对于雄激素性脱发的男性患者，建议口服非那雄胺，部分女性患者可以使用螺内酯。' +
-              '外用药上建议使用米诺地尔，同时还可以配合毛发移植、自体血小板血浆注射等手段。对于斑秃患者，大多数轻症的可以在六个月内自然痊愈。',
-          time: '2021-10-14',
-          label: [
-            "健康"
-          ],
-          commentNum: 3
+          img: require('@/assets/img/index/content/page/32.jpg'),
         },
         {
-          img: require('@/assets/img/index/content/page/3.jpg'),
-          name: '怎么提高睡眠质量',
-          title: '提高睡眠质量可以从以下几个方面做起：1、注意睡眠卫生，睡眠，卫生，包括睡眠环境，比如卧室当中的温度，湿度，光线，声音以及寝具舒适性。' +
-              '2、其次，晚饭不要吃得过饱，不要饮用兴奋性物质的饮料，例如酒精，浓茶，咖啡，功能性饮料，入睡前三小时不要做过于激烈的运动。' +
-              '3、心理治疗，因为大部分失眠和情绪有一定的关系，所以心理治疗对睡眠的改善是有很大作用的，尤其对平时工作压力很大，容易焦虑人来说，心理疏导，对睡眠有一定的帮助。' +
-              '4、必要时可以给予相关的药物进行干预。',
-          time: '2021-10-16',
-          label: [
-            "健康"
-          ],
-          commentNum: 1
+          img: require('@/assets/img/index/content/page/33.jpg'),
         },
         {
-          img: require('@/assets/img/index/content/page/7.jpg'),
-          name: '英语烂梗、谐音梗、土味情话收集',
-          title: '有一天下班，我和同事珊珊一起往地铁站走,珊珊问我：”我们打车还是走路或者你会骑单车吗？”我意味深长的说：“走路吧，我想牵着你的手走一会儿”,' +
-              '珊珊害羞的笑了：“你这土味情话绝了”,我说：“还想听吗？”,她兴奋的说：“想啊，想啊，虽然土，但是好听啊！”,我缓缓的抬起头：“你知道你为什么叫珊珊吗？”' +
-              '珊珊：“为什么？”我牵起她的手说：“因为上天注定你在我的世界姗姗来迟。”',
-          time: '2021-10-20',
-          label: [
-            "笑嘻嘻","英语"
-          ],
-          commentNum: 10
+          img: require('@/assets/img/index/content/page/36.jpg'),
         },
         {
-          img: require('@/assets/img/index/content/page/16.jpg'),
-          name: 'Vue前端开发笔记',
-          title: '之前一直采用VS进行各种前端后端的开发，随着项目的需要，正逐步融合纯前端的开发模式，开始主要选型为Vue + Element 进行BS前端的开发，' +
-              '后续会进一步整合Vue + AntDesign的界面套件，作为两种不同界面框架的展现方式。' +
-              '采用Vue + Element 的前端开发和之前的开发模式需要有较大的转变，以及需要接触更多的相关知识，本系列随笔基于循序渐进的学习研究方式，' +
-              '对使用Vue + Element 这种前端开发的各个方面进行一个完整的介绍，并结合我对BS前端已有的框架功能，进行两者的融合。' +
-              '本篇随笔主要介绍开发环境的准备工作，包括需要准备好相关的开发工具，插件辅助等，以及对开发保存的自动修正处理，调试的配置的内容等。',
-          time: '2021-10-23',
-          label: [
-            "学习","Vue"
-          ],
-          commentNum: 53
+          img: require('@/assets/img/index/content/page/42.jpg'),
         },
         {
-          img: require('@/assets/img/index/content/page/2.jpg'),
-          name: '秃头了怎么办？每个人都会秃头吗？有没有什么好办法可以解决秃头的问题啊？',
-          title: '脱发是皮肤科的常见疾病，其中雄激素性脱发和斑秃是常见的脱发类型。' +
-              '治疗方法包括口服药、局部外用药，一般推荐联合治疗。对于雄激素性脱发的男性患者，建议口服非那雄胺，部分女性患者可以使用螺内酯。' +
-              '外用药上建议使用米诺地尔，同时还可以配合毛发移植、自体血小板血浆注射等手段。对于斑秃患者，大多数轻症的可以在六个月内自然痊愈。',
-          time: '2021-10-14',
-          label: [
-            "健康"
-          ],
-          commentNum: 3
+          img: require('@/assets/img/index/content/page/59.jpg'),
         },
         {
-          img: require('@/assets/img/index/content/page/3.jpg'),
-          name: '怎么提高睡眠质量',
-          title: '提高睡眠质量可以从以下几个方面做起：1、注意睡眠卫生，睡眠，卫生，包括睡眠环境，比如卧室当中的温度，湿度，光线，声音以及寝具舒适性。' +
-              '2、其次，晚饭不要吃得过饱，不要饮用兴奋性物质的饮料，例如酒精，浓茶，咖啡，功能性饮料，入睡前三小时不要做过于激烈的运动。' +
-              '3、心理治疗，因为大部分失眠和情绪有一定的关系，所以心理治疗对睡眠的改善是有很大作用的，尤其对平时工作压力很大，容易焦虑人来说，心理疏导，对睡眠有一定的帮助。' +
-              '4、必要时可以给予相关的药物进行干预。',
-          time: '2021-10-16',
-          label: [
-            "健康"
-          ],
-          commentNum: 1
+          img: require('@/assets/img/index/content/page/85.jpg'),
         },
-        {
-          img: require('@/assets/img/index/content/page/7.jpg'),
-          name: '英语烂梗、谐音梗、土味情话收集',
-          title: '有一天下班，我和同事珊珊一起往地铁站走,珊珊问我：”我们打车还是走路或者你会骑单车吗？”我意味深长的说：“走路吧，我想牵着你的手走一会儿”,' +
-              '珊珊害羞的笑了：“你这土味情话绝了”,我说：“还想听吗？”,她兴奋的说：“想啊，想啊，虽然土，但是好听啊！”,我缓缓的抬起头：“你知道你为什么叫珊珊吗？”' +
-              '珊珊：“为什么？”我牵起她的手说：“因为上天注定你在我的世界姗姗来迟。”',
-          time: '2021-10-20',
-          label: [
-            "笑嘻嘻","英语"
-          ],
-          commentNum: 10
-        },
-        {
-          img: require('@/assets/img/index/content/page/16.jpg'),
-          name: 'Vue前端开发笔记',
-          title: '之前一直采用VS进行各种前端后端的开发，随着项目的需要，正逐步融合纯前端的开发模式，开始主要选型为Vue + Element 进行BS前端的开发，' +
-              '后续会进一步整合Vue + AntDesign的界面套件，作为两种不同界面框架的展现方式。' +
-              '采用Vue + Element 的前端开发和之前的开发模式需要有较大的转变，以及需要接触更多的相关知识，本系列随笔基于循序渐进的学习研究方式，' +
-              '对使用Vue + Element 这种前端开发的各个方面进行一个完整的介绍，并结合我对BS前端已有的框架功能，进行两者的融合。' +
-              '本篇随笔主要介绍开发环境的准备工作，包括需要准备好相关的开发工具，插件辅助等，以及对开发保存的自动修正处理，调试的配置的内容等。',
-          time: '2021-10-23',
-          label: [
-            "学习","Vue"
-          ],
-          commentNum: 53
-        },
-        {
-          img: require('@/assets/img/index/content/page/2.jpg'),
-          name: '秃头了怎么办？每个人都会秃头吗？有没有什么好办法可以解决秃头的问题啊？',
-          title: '脱发是皮肤科的常见疾病，其中雄激素性脱发和斑秃是常见的脱发类型。' +
-              '治疗方法包括口服药、局部外用药，一般推荐联合治疗。对于雄激素性脱发的男性患者，建议口服非那雄胺，部分女性患者可以使用螺内酯。' +
-              '外用药上建议使用米诺地尔，同时还可以配合毛发移植、自体血小板血浆注射等手段。对于斑秃患者，大多数轻症的可以在六个月内自然痊愈。',
-          time: '2021-10-14',
-          label: [
-            "健康"
-          ],
-          commentNum: 3
-        },
-        {
-          img: require('@/assets/img/index/content/page/3.jpg'),
-          name: '怎么提高睡眠质量',
-          title: '提高睡眠质量可以从以下几个方面做起：1、注意睡眠卫生，睡眠，卫生，包括睡眠环境，比如卧室当中的温度，湿度，光线，声音以及寝具舒适性。' +
-              '2、其次，晚饭不要吃得过饱，不要饮用兴奋性物质的饮料，例如酒精，浓茶，咖啡，功能性饮料，入睡前三小时不要做过于激烈的运动。' +
-              '3、心理治疗，因为大部分失眠和情绪有一定的关系，所以心理治疗对睡眠的改善是有很大作用的，尤其对平时工作压力很大，容易焦虑人来说，心理疏导，对睡眠有一定的帮助。' +
-              '4、必要时可以给予相关的药物进行干预。',
-          time: '2021-10-16',
-          label: [
-            "健康"
-          ],
-          commentNum: 1
-        },
-      ]
+      ],
+      posts: [],
+      postNum: 0,
+      currentPage: 1,
+      rowAccount: 10
     }
+  },
+  methods: {
+    handleCurrentChange(val) {
+      // console.log(`当前页: ${val}`);
+      selectByPage(val,this.rowAccount).then(res => {
+        // console.log(res);
+        if (res.obj === null ) {
+          this.posts = [];
+        } else {
+          this.posts = res.obj;
+        }
+      })
+    }
+  },
+  created() {
+    selectAllArticle().then(res => {
+      // console.log(res);
+      if (res.obj === null ) {
+        this.postNum = 0
+      } else {
+        this.postNum = res.obj.length
+      }
+    })
+
+    selectByPage(this.currentPage,this.rowAccount).then(res => {
+      // console.log(res);
+      if (res.obj === null ) {
+        this.posts = [];
+      } else {
+        this.posts = res.obj;
+      }
+    })
+
   },
 }
 </script>
@@ -214,6 +111,21 @@ export default {
   transition: all 0.4s ease 0s;
 }
 
+.index-pagination {
+  /*margin: 0 auto;*/
+  margin-left: 40%;
+}
 
+@media screen and (max-width: 440px) {
+  #index-content {
+    width: 100%;
+  }
+
+  .index-pagination {
+    /*margin: 0 auto;*/
+    margin-left: 25%;
+    margin-top: 2rem;
+  }
+}
 
 </style>

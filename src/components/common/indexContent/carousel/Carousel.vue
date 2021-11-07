@@ -1,6 +1,6 @@
 <template>
-  <div class="carousel" ref="obtainTop" :style="getStyle()">
-    <el-carousel :interval="3000" arrow="never" height="50rem">
+  <div class="carousel" ref="obtainTop" :style="getStyle()" >
+    <el-carousel :interval="3000" arrow="never" height="40rem">
       <el-carousel-item >
         <div class="carousel-box">
           <p class="carousel-box-title">第一篇文章</p>
@@ -61,18 +61,52 @@ export default {
 
 <style>
 .carousel {
-  height: 50rem;
+  height: 40rem;
   max-width: 90%;
   margin: 4rem auto;
   border-radius: 1rem;
-  overflow: hidden;
-  background: white;
+  /*overflow: hidden;*/
+  /*background: white;*/
   z-index: -1;
   transition: .8s;
 }
 
+@media screen and (max-width: 440px) {
+  .carousel {
+    height: 30rem;
+    max-width: 100%;
+    margin:  0;
+    border-radius: 0;
+    overflow: hidden;
+    background: white;
+    z-index: -1;
+    transition: .8s;
+  }
+
+  .carousel-box {
+    position: relative;
+    height: 30rem;
+    cursor: pointer;
+    border-radius: 1rem;
+  }
+
+  .carousel-box>img {
+    position: relative;
+    height: 30rem;
+    transition: .4s;
+    object-fit: cover;
+  }
+
+  .el-carousel__container {
+    height: 30rem !important;
+  }
+
+}
+
+
 .carousel-box {
-  height: 100%;
+  /*height: 100%;*/
+  height: 40rem;
   width: 100%;
   cursor: pointer;
   border-radius: 1rem;
@@ -93,11 +127,10 @@ export default {
 
 .carousel-box>img {
   position: absolute;
-  height: 100%;
+  height: 40rem;
   width: 100%;
   transition: .4s;
   object-fit: cover;
-
 }
 
 .carousel:hover .carousel-box>img{

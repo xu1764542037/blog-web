@@ -5,7 +5,7 @@
       <index-content></index-content>
       <index-aside v-show="asideShow"></index-aside>
     </div>
-<!--    <page-bottom></page-bottom>-->
+    <page-bottom></page-bottom>
     <display-and-top @is-show="AsideIsShow"></display-and-top>
   </div>
 
@@ -55,6 +55,18 @@ export default {
   @media screen and (min-width: 900px) {
     #index-second-page > div:first-child {
       width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 440px) {
+    #index-second-page {
+      display: flex;
+      -webkit-box-flex: 1;
+      flex: 1 1 auto;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      animation: 1s ease 0s 1 normal none running bottom-top;
     }
   }
 

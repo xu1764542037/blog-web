@@ -4,6 +4,7 @@
       <div class="content-box">
         <p class="time">© 2021</p>
         <p class="name">@LaoXu</p>
+        <a class="Record-No" href="http://beian.miit.gov.cn/">赣ICP备2021009239号</a>
       </div>
     </div>
   </div>
@@ -18,10 +19,11 @@ export default {
 <style scoped>
 .page-bottom {
   margin-top: 20rem;
-  background-image: url("../../../../assets/img/all/pageBottom/pageBottom.jpg");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  /*background-image: url("../../../../assets/img/all/pageBottom/57.jpg");*/
+  /*background-position: center center;*/
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+  background: rgba(0,0,0,.4);
   height: 20vh;
   width: 100%;
   color: #EFEDEC;
@@ -54,6 +56,23 @@ export default {
   font-size: 2rem;
 }
 
+.Record-No {
+  position: relative;
+  font-size: 1.8rem;
+  color: white;
+  text-decoration:none;
+  cursor: pointer;
+  top: 1rem;
+}
 
 
+@media screen and (max-width: 440px) {
+  .page-bottom {
+    margin-top: 2rem;
+    background: rgba(0,0,0,.4);
+    height: 20vh;
+    width: 100%;
+    color: #EFEDEC;
+  }
+}
 </style>

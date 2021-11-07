@@ -1,14 +1,16 @@
 <template>
   <div class="posts-head">
-    <img :src="page.img" οndragstart="return false">
-    <div class="page-info">
-      <div class="info-name">{{page.name}}</div>
-      <div class="info-row">
-        <span class="startTime">发表于 {{page.startTime}}</span>
+<!--    <img :src="page.img" οndragstart="return false">-->
+<!--    <img src="@/assets/img/posts/head/19.jpeg" οndragstart="return false">-->
+    <img :src="page.img">
+    <div class="page-info" >
+      <div class="info-name">{{res.name}}</div>
+      <div class="info-row" id="info-row1">
+        <span class="startTime">发表于 {{res.StartTime}}</span>
         <span class="division">|</span>
-        <span class="endTime">更新于 {{page.endTime}}</span>
+        <span class="endTime">更新于 {{res.EndTime}}</span>
         <span class="division">|</span>
-        <span class="type">{{page.type}}</span>
+        <span class="type">{{res.typeName}}</span>
       </div>
       <div class="info-row">
         <span class="textNum">字数总计: {{page.textNum}}</span>
@@ -24,20 +26,30 @@
 </template>
 
 <script>
+
+import {selectArticle} from "@/network/article/article";
+
 export default {
+  props: {
+    res: {
+      TYPE: Object,
+      default() {
+        return {
+
+        }
+      }
+    }
+  },
   name: "PostsHead",
   data() {
     return {
       page: {
-        name: "idea从零到精通07之idea数据库管理",
-        img: require('@/assets/img/posts/head/19.jpeg'),
-        startTime: "2021-10-21",
-        endTime: "2021-11-25",
-        type: "干货分享",
+        name: "",
+        img: 'http://106.15.38.204:8188/blog/note/assets/2021102821403347eb4ff5bf494d6a85795f3554c4ce6f.jpeg',
         textNum: "700",
         seeTime: "3",
         seeNum: "230",
-        comment: "3"
+        comment: "350",
       }
     }
   }
@@ -56,6 +68,11 @@ export default {
   -ms-transition: all .5s;
   transition: all .5s;
   color: #EFEDEC;
+  overflow-x: hidden;
+  /*background-image: url("../../../assets/img/posts/head/19.jpeg");*/
+  /*background-size: cover;*/
+  /*object-fit: cover;*/
+  /*background-position: center center;*/
 }
 
 .posts-head>img {
@@ -128,5 +145,82 @@ export default {
 }
 .comment::before {
   content: url("../../../assets/img/posts/head/comment.svg");
+}
+
+
+@media screen and (max-width: 440px) {
+  .posts-head {
+    position: relative;
+    width: 100%;
+    height: 35vh;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    -ms-transition: all .5s;
+    transition: all .5s;
+    color: #EFEDEC;
+  }
+
+  .posts-head>img {
+    height: 35vh;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .page-info {
+    position: absolute;
+    height: 20rem;
+    min-width: 100%;
+    margin: 8rem 2rem;
+    text-align: left;
+  }
+
+  .info-name {
+    height: 5rem;
+    width: 100%;
+    font-size: 3.2rem;
+    font-family: chinese,sans-serif;
+    font-weight: 700;
+    letter-spacing: .3rem;
+    line-height: 5rem;
+  }
+
+  .startTime {
+    display: none;
+  }
+
+
+  .seeTime {
+    display: none;
+  }
+
+
+  .division {
+    font-size: 3rem;
+    position: relative;
+    top: .4rem;
+  }
+
+  #info-row1 {
+    margin-top: 5rem;
+  }
+
+  .info-row {
+    height: 3rem;
+    width: 100%;
+    font-size: 1.4rem;
+    margin-top: .5rem;
+    font-family: chinese,sans-serif;
+    font-weight: 700;
+    line-height: 3rem;
+  }
+
+  .info-row>span {
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
 }
 </style>

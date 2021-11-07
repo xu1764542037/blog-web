@@ -78,7 +78,7 @@ export default {
   position: relative;
   width: 100%;
   min-height: 28rem;
-  margin: 0 auto;
+  margin: 4rem auto;
   border-radius: 1rem;
   background: rgba(255,255,255,.5);
   padding: 2rem 1rem 0 1rem;

@@ -223,7 +223,7 @@ export default {
 
   }
 
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 440px) {
     #search-all {
       display: none;
     }

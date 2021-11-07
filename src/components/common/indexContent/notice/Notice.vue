@@ -4,7 +4,6 @@
       <img class="horn-img" src="@/assets/img/index/content/notice/horn.svg">
     </span>
     <p class="notice-name">公告栏</p>
-
     <div class="swiper">
       <div class="content">
         <p v-for="page in pages">{{page.name}}</p>
@@ -103,6 +102,25 @@ export default {
   cursor: pointer;
   overflow: hidden;
   transition: 1s;
+}
+
+@media screen and (max-width: 440px) {
+  #notice {
+    height: 5rem;
+    transform: scale(.5);
+    margin: 0 auto;
+    border-radius: 0;
+    background: rgba(255,255,255,.5);
+    width: 100%;
+    line-height: 5rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 1s;
+  }
+
+  .notice-name {
+    opacity: 0;
+  }
 }
 
 .horn>.horn-img {

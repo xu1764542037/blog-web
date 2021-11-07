@@ -4,53 +4,44 @@
       <p></p>
       <p>内容更新</p>
     </div>
-    <div class="content" v-for="page in pages">
+    <div class="content" v-for="(page,index) in posts" @click="goPost(page.id)">
       <div class="content-img-box">
-        <img class="content-img" :src="page.img">
+        <img class="content-img" :src="imgs[index].img">
       </div>
       <div class="content-name-box">
         <p class="content-name">{{page.name}}</p>
       </div>
-
       <div class="content-time-box">
-        <p class="content-time">{{page.time}}</p>
-
+        <p class="content-time">{{page.StartTime}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import {selectAllArticle, selectByPage} from "@/network/article/article";
+
 export default {
   name: "Update",
-  data() {
+  data: function () {
     return {
       marginLeft: '70%',
-      pages: [
+      posts: [],
+      imgs: [
         {
-          img: require('@/assets/img/index/aside/update/101.png'),
-          name: '老徐第一帅是真的吗',
-          time: '2021-10-20'
+         img: require ('@/assets/img/index/aside/update/101.png')
         },
         {
-          img: require('@/assets/img/index/aside/update/102.png'),
-          name: '老徐第二帅不太行',
-          time: '2021-10-21'
+          img: require ('@/assets/img/index/aside/update/102.png')
         },
         {
-          img: require('@/assets/img/index/aside/update/103.png'),
-          name: '老徐第三帅啊',
-          time: '2021-10-22'
+          img: require ('@/assets/img/index/aside/update/103.png')
         },
         {
-          img: require('@/assets/img/index/aside/update/104.png'),
-          name: '老徐第四帅，你觉得是真的吗',
-          time: '2021-10-23'
+          img: require ('@/assets/img/index/aside/update/104.png')
         },
         {
-          img: require('@/assets/img/index/aside/update/105.png'),
-          name: '老徐第五帅，我觉得还行',
-          time: '2021-10-24'
+          img: require ('@/assets/img/index/aside/update/105.png')
         },
       ]
     }
@@ -80,7 +71,17 @@ export default {
         marginTop: this.marginTop,
       }
     },
-  }
+    goPost(path) {
+      this.$router.replace({path: "/posts/"+path+"/"})
+      this.$router.go(0);
+    }
+  } ,
+  created() {
+    selectByPage(1,5).then( res => {
+      this.posts = res.obj
+    })
+  },
+
 }
 </script>
 

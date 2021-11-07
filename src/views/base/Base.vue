@@ -1,9 +1,10 @@
 <template>
   <div id="base">
-    <div class="top-bar">
+    <div class="top-bar" v-show="baseShow">
       <span>博客后台系统</span>
+      <p class="exit" @click="exit">退出</p>
     </div>
-    <div class="left-bar">
+    <div class="left-bar" v-show="baseShow">
       <nav-menu></nav-menu>
     </div>
     <router-view></router-view>
@@ -15,10 +16,24 @@ import NavMenu from "@/components/common/base/navMenu/NavMenu";
 
 export default {
   name: "Base",
+  data() {
+    return {
+      baseShow: true
+    }
+  },
   components: {NavMenu},
+  methods: {
+    exit() {
+      sessionStorage.setItem("token", 'false');
+      this.$parent.navShow = true
+      this.$router.push({path: "/index"})
+
+    }
+  },
   beforeCreate() {
     this.$parent.navShow = false
-  }
+  },
+
 }
 </script>
 
@@ -53,4 +68,13 @@ export default {
   width: 15%;
   background: rgba(0,0,0,.3);
 }
+.exit {
+  font-size: 1.8rem;
+  font-family: PingFangSC,sans-serif;
+  position: relative;
+  margin-left: 94%;
+  margin-top: -3rem;
+  cursor: pointer;
+}
+
 </style>

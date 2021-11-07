@@ -28,7 +28,7 @@
     <div class="last-month table-column">
       <p class="column-name">过去一月摸鱼次数</p>
       <p class="column-num">30</p>
-      <p class="column-name">{{lastMonth}} - {{today}}</p>
+      <p class="column-time">{{lastMonth}} - {{today}}</p>
     </div>
     <div class="last-week table-column">
       <p class="column-name">过去一周摸鱼次数</p>
@@ -113,6 +113,38 @@ export default {
   overflow: hidden;
 }
 
+@media screen and (max-width: 440px) {
+  #contributions-box {
+    height: 32rem;
+    max-width: 100%;
+    /*width: 1000px;*/
+    /*background: white;*/
+    background: rgba(255,255,255,.5);
+    margin: 0;
+    border-radius: 0;
+    transition: .8s;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .column-name {
+    font-size: 1.2rem;
+    margin-top: .5rem;
+  }
+  .column-num {
+    font-size: 1.4rem;
+    font-weight: 100;
+    margin-top: .5rem;
+  }
+  .column-time {
+    font-size: 1.2rem;
+    margin-top: .5rem;
+  }
+}
+
 #contributions-box:hover {
   box-shadow: .2rem .2rem 2rem black;
   background: rgba(255,255,255,.7);
@@ -126,14 +158,12 @@ export default {
 .column-name {
   font-size: 12px;
   margin-top: .5rem;
-
 }
 
 .column-num {
   font-size: 24px;
   font-weight: 100;
   margin-top: 1rem;
-
 }
 
 .column-time {

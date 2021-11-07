@@ -9,7 +9,7 @@ Vue.use(Vuex)
 
 
 const state = {
-
+  allPost: [],
 }
 
 const store = new Vuex.Store({

@@ -1,134 +1,127 @@
 <template>
   <div id="archive">
-    <div class="archive-title">文章总览 - {{pages.length}}</div>
+    <div class="archive-title">文章总览 - {{posts.length}}</div>
     <div class="archive-content">
       <div class="page-year">
         <span>2021年</span>
       </div>
-      <div class="page-box" v-for="page in pages">
+      <div class="page-box" v-for="(page,index) in posts" @click="goPost(page.id)">
         <div class="page-img-box">
-          <img :src="page.img" >
+          <img :src="imgs[index].img" >
         </div>
         <span class="page-date">
-          {{page.time}}
+          {{page.StartTime}}
         </span>
         <div class="page-name">
           {{page.name}}
         </div>
       </div>
     </div>
-
+    <el-pagination
+        class="archive-pagination"
+        background
+        layout="prev, pager, next"
+        @current-change="handleCurrentChange"
+        :page-size="15"
+        :total="postNum">
+    </el-pagination>
   </div>
 </template>
 
 <script>
+import {selectAllArticle, selectByPage} from "@/network/article/article";
+
 export default {
   name: "Archive",
   data() {
     return {
-      pages: [
+      posts: [],
+      postNum: 0,
+      currentPage: 1,
+      rowAccount: 15,
+      imgs: [
         {
-          img: require('@/assets/img/article/content/101.png'),
-          name: 'idea从零到精通07之idea数据库管理',
-          time: '2021-10-20'
+          img: require('@/assets/img/article/content/101.png')
         },
         {
-          img: require('@/assets/img/article/content/102.png'),
-          name: '字节码增强技术之 Java Agent 入门',
-          time: '2021-10-21'
+          img: require('@/assets/img/article/content/102.png')
         },
         {
-          img: require('@/assets/img/article/content/103.png'),
-          name: 'C++还在用printf/cout进行Debug？学习一下如何自己写日志库吧',
-          time: '2021-10-22'
+          img: require('@/assets/img/article/content/103.png')
         },
         {
-          img: require('@/assets/img/article/content/104.png'),
-          name: 'seata源码解析：seata server如何存储事务执行状态的？',
-          time: '2021-10-23'
+          img: require('@/assets/img/article/content/104.png')
         },
         {
-          img: require('@/assets/img/article/content/105.png'),
-          name: '阿里四面：Spring Exception的原理你精通了吗？',
-          time: '2021-10-24'
+          img: require('@/assets/img/article/content/105.png')
         },
         {
-          img: require('@/assets/img/article/content/111.jpg'),
-          name: '基于SSM+SpringBoot+LayUI的医院挂号系统(附论文)',
-          time: '2021-10-20'
+          img: require('@/assets/img/article/content/106.png')
         },
         {
-          img: require('@/assets/img/article/content/112.jpg'),
-          name: '公司CEO和我说：在系统优化的时候，不要轻易用多线程',
-          time: '2021-10-21'
+          img: require('@/assets/img/article/content/107.png')
         },
         {
-          img: require('@/assets/img/article/content/113.jpg'),
-          name: 'Redis高并发防止秒杀超卖实战源码解决方案',
-          time: '2021-10-22'
+          img: require('@/assets/img/article/content/108.png')
         },
         {
-          img: require('@/assets/img/article/content/114.jpg'),
-          name: 'idea 使用maven 打包jar 打的jar包在本地电脑可以正常运行，但在其他电脑会出错',
-          time: '2021-10-23'
+          img: require('@/assets/img/article/content/109.png')
         },
         {
-          img: require('@/assets/img/article/content/115.jpg'),
-          name: '自学Java最起码要学到什么程度？',
-          time: '2021-10-24'
+          img: require('@/assets/img/article/content/110.png')
         },
         {
-          img: require('@/assets/img/article/content/101.png'),
-          name: 'idea从零到精通07之idea数据库管理',
-          time: '2021-10-20'
+          img: require('@/assets/img/article/content/111.jpg')
         },
         {
-          img: require('@/assets/img/article/content/102.png'),
-          name: '字节码增强技术之 Java Agent 入门',
-          time: '2021-10-21'
+          img: require('@/assets/img/article/content/112.jpg')
         },
         {
-          img: require('@/assets/img/article/content/103.png'),
-          name: 'C++还在用printf/cout进行Debug？学习一下如何自己写日志库吧',
-          time: '2021-10-22'
+          img: require('@/assets/img/article/content/113.jpg')
         },
         {
-          img: require('@/assets/img/article/content/104.png'),
-          name: 'seata源码解析：seata server如何存储事务执行状态的？',
-          time: '2021-10-23'
+          img: require('@/assets/img/article/content/114.jpg')
         },
         {
-          img: require('@/assets/img/article/content/105.png'),
-          name: '阿里四面：Spring Exception的原理你精通了吗？',
-          time: '2021-10-24'
-        },
-        {
-          img: require('@/assets/img/article/content/111.jpg'),
-          name: '基于SSM+SpringBoot+LayUI的医院挂号系统(附论文)',
-          time: '2021-10-20'
-        },
-        {
-          img: require('@/assets/img/article/content/112.jpg'),
-          name: '公司CEO和我说：在系统优化的时候，不要轻易用多线程',
-          time: '2021-10-21'
-        },
-        {
-          img: require('@/assets/img/article/content/113.jpg'),
-          name: 'Redis高并发防止秒杀超卖实战源码解决方案',
-          time: '2021-10-22'
-        },
-        {
-          img: require('@/assets/img/article/content/114.jpg'),
-          name: 'idea 使用maven 打包jar 打的jar包在本地电脑可以正常运行，但在其他电脑会出错',
-          time: '2021-10-23'
-        },
-        {
-          img: require('@/assets/img/article/content/115.jpg'),
-          name: '自学Java最起码要学到什么程度？',
-          time: '2021-10-24'
-        },
+          img: require('@/assets/img/article/content/115.jpg')
+        }
       ]
     }
+  },
+  methods:{
+    goPost(path) {
+      this.$router.push({path: "/posts/"+path})
+    },
+    handleCurrentChange(val) {
+      // console.log(`当前页: ${val}`);
+      selectByPage(val,this.rowAccount).then(res => {
+        // console.log(res);
+        if (res.obj === null ) {
+          this.posts = [];
+        } else {
+          this.posts = res.obj;
+        }
+      })
+    }
+  },
+  created() {
+    selectAllArticle().then(res => {
+      // console.log(res);
+      if (res.obj === null ) {
+        this.postNum = 0
+      } else {
+        this.postNum = res.obj.length
+      }
+    })
+
+    selectByPage(this.currentPage,this.rowAccount).then(res => {
+      // console.log(res);
+      if (res.obj === null ) {
+        this.posts = [];
+      } else {
+        this.posts = res.obj;
+      }
+    })
   }
 }
 </script>
@@ -138,7 +131,8 @@ export default {
     position: relative;
     border-radius: 1rem;
     max-width: 90%;
-    height: 300rem;
+    /*height: 300rem;*/
+    height: auto;
     background: rgba(255,255,255,.5);
     padding: 4rem;
     margin: 0 auto;
@@ -265,5 +259,9 @@ export default {
   .page-box:hover .page-name {
     color: #8CC5FF;
     left: 15rem;
+  }
+
+  .archive-pagination {
+    margin-left: 40%;
   }
 </style>

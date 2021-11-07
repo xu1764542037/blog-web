@@ -16,6 +16,7 @@ export default {
   methods:{
     goIndex() {
       this.$router.push({path: "/index"})
+      // window.location.reload()
     }
   }
 }

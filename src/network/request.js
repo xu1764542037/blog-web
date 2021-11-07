@@ -1,13 +1,15 @@
 import axios from "axios";
+import store from '@/store'//vuex的路径
+
 
 export function request(config) {
   // 1.创建axios实例
   const instance = axios.create({
-    baseURL: 'http://106.15.38.204:8188/blog',
-    // baseURL: 'http://localhost:8188/blog',
+    // baseURL: 'http://106.15.38.204:8188/blog',
+    baseURL: 'http://localhost:8188/blog',
     // baseURL: 'http://localhost:8088/modernsky',
 
-    timeout: 20000
+    timeout: 10000
   })
 
   //2.axios的拦截器
@@ -21,7 +23,7 @@ export function request(config) {
   //2.2.响应拦截
   instance.interceptors.response.use(res => {
     // console.log(res);
-    return res
+    return res.data
   },err => {
     // console.log(err,"2");
   })
@@ -30,3 +32,4 @@ export function request(config) {
   //instance(config)本身返回一个promise
   return instance(config)
 }
+

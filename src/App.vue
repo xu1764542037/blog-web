@@ -18,7 +18,6 @@ import Slide from "@/components/common/special/slide/Slide";
 import WaveItem from "@/components/common/special/Click/WaveItem";
 
 
-
 export default {
   name: 'App',
   components: {
@@ -32,11 +31,12 @@ export default {
       navShow:true,
       bgShow: true
     }
-  }
+  },
 }
 </script>
 
 <style>
+
   * {
     padding: 0;
     margin: 0;
@@ -45,13 +45,13 @@ export default {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     cursor: url("assets/img/cursor/static.svg"),default;
-
     /*文字不能被选中*/
     /*-webkit-user-select:none;*/
     /*-moz-user-select:none;*/
     /*-ms-user-select:none;*/
     /*user-select:none;*/
   }
+
 
   html {
     font-size:62.5%;
@@ -61,6 +61,10 @@ export default {
     text-decoration:none;
     outline: none;
     overflow-x: hidden;
+  }
+
+  html, body {
+    scroll-behavior: smooth;
   }
 
   #app {
@@ -74,10 +78,11 @@ export default {
     background-attachment: fixed;
     z-index: 1;
     opacity: 1;
+
   }
 
   ::selection {
-    background: #409EFF;
+    background: #CCCCFF;
   }
 
     /*滚动条样式*/
