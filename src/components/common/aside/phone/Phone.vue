@@ -35,14 +35,14 @@
       </div>
     </div>
     <div class="society">
-      <img src="@/assets/img/index/aside/phone/github.svg">
-      <img src="@/assets/img/index/aside/phone/bilibili.svg">
-      <img src="@/assets/img/index/aside/phone/music.svg">
-      <img src="@/assets/img/index/aside/phone/qq.svg">
-      <img src="@/assets/img/index/aside/phone/QQmusic.svg">
-      <img src="@/assets/img/index/aside/phone/know.svg">
-      <img src="@/assets/img/index/aside/phone/weibo.svg">
-      <img src="@/assets/img/index/aside/phone/csdn.svg">
+      <a href="https://github.com/xu1764542037" target="_blank"><img class="imgs" src="@/assets/img/index/aside/phone/github.svg"></a>
+      <a href="https://space.bilibili.com/28598237" target="_blank"><img class="imgs" src="@/assets/img/index/aside/phone/bilibili.svg"></a>
+      <a href="https://music.163.com/#/user/home?id=369891883" target="_blank"><img class="imgs" src="@/assets/img/index/aside/phone/music.svg"></a>
+      <a href="tencent://message/?uin=1764542037" target="_blank"><img class="imgs" src="@/assets/img/index/aside/phone/qq.svg"></a>
+      <a href="https://y.qq.com/n/ryqq/playlist/2813410072" target="_blank"><img class="imgs" src="@/assets/img/index/aside/phone/QQmusic.svg"></a>
+      <a href="https://www.zhihu.com/people/xiao-xu-86-2" target="_blank"><img class="imgs" src="@/assets/img/index/aside/phone/know.svg"></a>
+      <a href="https://weibo.com/u/5980924315" target="_blank"><img class="imgs" src="@/assets/img/index/aside/phone/weibo.svg"></a>
+      <a href="https://blog.csdn.net/Ricardo_Xiaoxu?spm=1000.2115.3001.5343" target="_blank"><img class="imgs" src="@/assets/img/index/aside/phone/csdn.svg"></a>
     </div>
     <div class="bottom"></div>
   </div>
@@ -104,7 +104,8 @@ export default {
           this.when = "noon"
         }
       },1000)
-    }
+    },
+
   },
   beforeDestroy() {
     if(this.time) {
@@ -294,15 +295,16 @@ export default {
     justify-content: space-evenly;
   }
 
-  .society>img {
+  .imgs {
+    position: relative;
     height: 2.5rem;
-    width: 12%;
+    width: 2.5rem;
     margin-top: 1.25rem;
     cursor: pointer;
     transition: .4s;
   }
 
-  .society>img:hover {
+  .imgs:hover {
     transform: scale(1.2);
   }
 

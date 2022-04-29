@@ -24,27 +24,27 @@ export default {
       census: [
         {
           name: "文章数目",
-          data: "23"
+          data: "**"
         },
         {
           name: "运行时间",
-          data: "5天"
+          data: "*天"
         },
         {
           name: "本站总字数",
-          data: "103.1K"
+          data: "***"
         },
         {
           name: "本站访客数",
-          data: "2134"
+          data: "***"
         },
         {
           name: "本站总访问量",
-          data: "41246"
+          data: "***"
         },
         {
           name: "最后更新时间",
-          data: "8天前"
+          data: "****"
         },
       ]
     }

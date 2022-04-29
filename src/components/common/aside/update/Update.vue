@@ -73,7 +73,6 @@ export default {
     },
     goPost(path) {
       this.$router.replace({path: "/posts/"+path+"/"})
-      this.$router.go(0);
     }
   } ,
   created() {

@@ -45,7 +45,7 @@ export default {
     return {
       page: {
         name: "",
-        img: 'http://106.15.38.204:8188/blog/note/assets/2021102821403347eb4ff5bf494d6a85795f3554c4ce6f.jpeg',
+        img: 'http://106.15.38.204:8688/blog/note/assets/2021102821403347eb4ff5bf494d6a85795f3554c4ce6f.jpeg',
         textNum: "700",
         seeTime: "3",
         seeNum: "230",
