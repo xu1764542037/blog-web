@@ -78,7 +78,8 @@
 import {
   deleteArticle,
   selectAllArticle,
-  selectAllArticleByCondition, selectByPage,
+  selectAllArticleByCondition,
+  selectByPage,
   selectType
 } from "@/network/article/article";
 
@@ -102,7 +103,7 @@ export default {
     handleSizeChange(val) {
       // console.log(`每页 ${val} 条`);
       this.rowAccount = val
-      selectByPage(this.currentPage,this.rowAccount).then(res => {
+      selectByPage(null,null,null,null,null,null,null,this.currentPage,this.rowAccount).then(res => {
         // console.log(res);
         if (res.obj === null ) {
           this.tableData = [];
@@ -114,7 +115,7 @@ export default {
     handleCurrentChange(val) {
       // console.log(`当前页: ${val}`);
       this.currentPage = val
-      selectByPage(this.currentPage,this.rowAccount).then(res => {
+      selectByPage(null,null,null,null,null,null,null,this.currentPage,this.rowAccount).then(res => {
         // console.log(res);
         if (res.obj === null ) {
           this.tableData = [];
@@ -153,11 +154,11 @@ export default {
       }).then(() => {
         deleteArticle(row.id).then(res => {
           // console.log(res);
-          selectByPage(this.currentPage,this.rowAccount).then(res => {
+          selectByPage(null,null,null,null,null,null,null,this.currentPage,this.rowAccount).then(res => {
             // console.log(res);
             if (res.obj === null || res.obj.length === 0) {
               this.currentPage = this.currentPage - 1
-              selectByPage(this.currentPage,this.rowAccount).then(res => {
+              selectByPage(null,null,null,null,null,null,null,this.currentPage,this.rowAccount).then(res => {
                 if (res.obj === null ) {
                   this.tableData = [];
                 } else {
@@ -197,7 +198,7 @@ export default {
       }
     })
 
-    selectByPage(this.currentPage,this.rowAccount).then(res => {
+    selectByPage(null,null,null,null,null,null,null,this.currentPage,this.rowAccount).then(res => {
       // console.log(res);
       if (res.obj === null ) {
         this.tableData = [];

@@ -25,6 +25,16 @@ export function selectArticle(id) {
   })
 }
 
+export function selectArticleByType(type) {
+  return request({
+    url: "/article/select",
+    method: "post",
+    data: {
+      type: type
+    }
+  })
+}
+
 export function selectAllArticleByCondition(name,type) {
   return request({
     url: "/article/selectAllArticle",
@@ -36,11 +46,18 @@ export function selectAllArticleByCondition(name,type) {
   })
 }
 
-export function selectAllArticle() {
+export function selectAllArticle(id,name,summary,text,labels,type,state) {
   return request({
     url: "/article/selectAllArticle",
     method: "post",
     data: {
+      id: id,
+      name: name,
+      summary: summary,
+      text: text,
+      labels: labels,
+      type: type,
+      state: state,
     }
   })
 }
@@ -76,11 +93,18 @@ export function setLabelByArticle(label_ids) {
   })
 }
 
-export function selectByPage(page,rowAccount) {
+export function selectByPage(id,name,summary,text,labels,type,state,page,rowAccount) {
   return request({
     url: "/article/findByPage",
     method: "post",
     data: {
+      id: id,
+      name: name,
+      summary: summary,
+      text: text,
+      labels: labels,
+      type: type,
+      state: state,
       page: page-1,
       rowAccount: rowAccount,
     },

@@ -47,5 +47,6 @@ export default {
   -ms-flex-direction: column;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
 }
 </style>

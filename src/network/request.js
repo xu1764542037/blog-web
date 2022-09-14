@@ -5,8 +5,8 @@ import store from '@/store'//vuex的路径
 export function request(config) {
   // 1.创建axios实例
   const instance = axios.create({
-    baseURL: 'http://106.15.38.204:8688/blog',
-    // baseURL: 'http://localhost:8688/blog',
+    // baseURL: 'http://106.15.38.204:8188/blog',
+    baseURL: 'http://localhost:8188/blog',
     // baseURL: 'http://localhost:8088/modernsky',
 
     timeout: 10000

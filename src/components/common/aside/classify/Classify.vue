@@ -4,7 +4,7 @@
       <p></p>
       <p>分类</p>
     </div>
-    <div class="content" v-for="classify in classifies">
+    <div class="content" v-for="(classify,index) in classifies">
         <img :src="classify.img">
         <span class="content-name">
         {{classify.name}}
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import {selectEverTypeNum} from "@/network/type/type";
+
 export default {
   name: "Classify",
   data() {
@@ -26,29 +28,30 @@ export default {
         {
           img: require('@/assets/img/index/aside/classify/recommend.svg'),
           name: '优质转载',
-          num: '17'
+          num: 0
         },
         {
           img: require('@/assets/img/index/aside/classify/chat.svg'),
           name: '茶余饭后',
-          num: '13'
+          num: 0
         },
         {
           img: require('@/assets/img/index/aside/classify/notebook.svg'),
           name: '实用教程',
-          num: '25'
+          num: 0
         },
         {
           img: require('@/assets/img/index/aside/classify/book.svg'),
           name: '知识笔记',
-          num: '11'
+          num: 0
         },
         {
           img: require('@/assets/img/index/aside/classify/share.svg'),
           name: '干货分享',
-          num: '8'
+          num: 0
         }
-      ]
+      ],
+      typeNums: []
     }
   },
   mounted() {
@@ -69,6 +72,16 @@ export default {
         marginLeft: this.marginLeft
       }
     },
+  },
+  created() {
+    selectEverTypeNum().then( res => {
+      this.typeNums= res.obj;
+      this.classifies[0].num = res.obj.typeId_1
+      this.classifies[1].num = res.obj.typeId_2
+      this.classifies[2].num = res.obj.typeId_3
+      this.classifies[3].num = res.obj.typeId_4
+      this.classifies[4].num = res.obj.typeId_5
+    })
   }
 }
 </script>

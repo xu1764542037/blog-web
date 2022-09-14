@@ -9,12 +9,23 @@ import axios from "axios";
 
 Vue.config.productionTip = false
 
+import * as echarts from "echarts";
+Vue.prototype.$echarts = echarts;
+
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/font.css'
 
 import mavonEditor from "mavon-editor"
 import "mavon-editor/dist/css/index.css"
+
+//引入代码高亮
+import highlight from 'highlight.js';
+
+
+Vue.use(highlight);
+
+
 Vue.use(mavonEditor)
 
 Vue.use(ElementUI)
@@ -43,4 +54,15 @@ router.beforeEach((to, from, next) => {
   }, 10);
   next()
 })
+
+//将代码高亮封装成一个指令
+Vue.directive('highlight', (el) => {
+  let blocks = el.querySelectorAll('pre code')
+  blocks.forEach((block) => {
+    highlight.highlightBlock(block)
+
+  })
+
+})
+
 

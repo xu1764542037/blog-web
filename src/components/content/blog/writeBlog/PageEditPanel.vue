@@ -6,6 +6,7 @@
     </div>
     <mavon-editor class="editor"
                   :ishljs = "true"
+                  :codeStyle="code_style"
                   v-model="PageValue"
                   ref=md @save="saveFile"
                   @imgAdd="imgAdd"></mavon-editor>

@@ -1,5 +1,5 @@
 <template>
-  <div id="Index-first-page">
+  <div id="Index-first-page" >
     <flowing-text :texts="texts">
       <div slot="blog_name">LaoXu' Blog</div>
     </flowing-text>
@@ -18,7 +18,8 @@ export default {
         "There is only one me in this world.",
         "When it has is lost, brave to give up.",
         "Say goodbye to the depravation of yesterday."
-      ]
+      ],
+      opacity: 0
     }
   },
   components: {
@@ -34,8 +35,13 @@ export default {
         }
       }, 10);
       window.scrollTo(0,940);
-    }
-  }
+    },
+
+  },
+
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScrollx, true)
+  },
 }
 </script>
 

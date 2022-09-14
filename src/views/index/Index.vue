@@ -46,8 +46,8 @@ export default {
     -webkit-box-flex: 1;
     flex: 1 1 auto;
     margin: 0 auto;
-    padding: 2rem 15px;
-    max-width: 1400px;
+    padding: 2rem 27rem;
+    /*max-width: 1400px;*/
     width: 100%;
     animation: 1s ease 0s 1 normal none running bottom-top;
   }

@@ -1,11 +1,13 @@
 <template>
   <div class="post">
-    <div class="article" v-html="text"></div>
+    <div v-highlight class="article" v-html="text"></div>
   </div>
 </template>
 
 <script>
 import {selectArticle} from "@/network/article/article";
+import "highlight.js/styles/arduino-light.css";
+
 
 export default {
   props: {

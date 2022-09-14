@@ -4,7 +4,7 @@
       <div class="content-box">
         <p class="time">© 2021</p>
         <p class="name">@LaoXu</p>
-        <a class="Record-No" href="http://beian.miit.gov.cn/">赣ICP备2021009239号</a>
+        <a class="Record-No" href="https://beian.miit.gov.cn/">赣ICP备2021009239号</a>
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 .page-bottom {
-  margin-top: 20rem;
+  margin-top: 5rem;
   /*background-image: url("../../../../assets/img/all/pageBottom/57.jpg");*/
   /*background-position: center center;*/
   /*background-size: cover;*/

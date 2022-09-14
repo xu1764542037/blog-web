@@ -43,7 +43,6 @@ export default {
   max-width: 1400px;
   width: 100%;
   animation: 1s ease 0s 1 normal none running bottom-top;
-
 }
 
 .content {

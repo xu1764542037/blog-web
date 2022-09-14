@@ -76,7 +76,7 @@ export default {
     }
   } ,
   created() {
-    selectByPage(1,5).then( res => {
+    selectByPage(null,null,null,null,null,null,null,1,5).then( res => {
       this.posts = res.obj
     })
   },

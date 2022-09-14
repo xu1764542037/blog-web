@@ -1,28 +1,11 @@
 <template>
   <div class="carousel" ref="obtainTop" :style="getStyle()" >
     <el-carousel :interval="3000" arrow="never" height="40rem">
-      <el-carousel-item >
-        <div class="carousel-box">
-          <p class="carousel-box-title">第一篇文章</p>
-          <img src="@/assets/img/index/content/carousel/5.jpg">
-        </div>
-      </el-carousel-item>
-      <el-carousel-item>
-        <div class="carousel-box">
-          <p class="carousel-box-title">第二篇文章</p>
-          <img src="@/assets/img/index/content/carousel/10.jpg">
-        </div>
-      </el-carousel-item>
-      <el-carousel-item>
-        <div class="carousel-box">
-          <p class="carousel-box-title">第三篇文章</p>
-          <img src="@/assets/img/index/content/carousel/11.jpg">
-        </div>
-      </el-carousel-item>
-      <el-carousel-item>
-        <div class="carousel-box">
-          <p class="carousel-box-title">第四篇文章</p>
-          <img src="@/assets/img/index/content/carousel/12.jpg">
+
+      <el-carousel-item v-for="(post,index) in posts">
+        <div class="carousel-box" @click="goPost(post.id)">
+          <p class="carousel-box-title">{{post.name}}</p>
+          <img :src="imgs[index].img">
         </div>
       </el-carousel-item>
     </el-carousel>
@@ -30,11 +13,29 @@
 </template>
 
 <script>
+import {selectAllArticle, selectByPage} from "@/network/article/article";
+
+
 export default {
   name: "Carousel",
   data() {
     return {
-      transform: 'scale(.5)'
+      transform: 'scale(.5)',
+      posts: [],
+      imgs: [
+        {
+          img: require ('@/assets/img/index/content/carousel/5.jpg')
+        },
+        {
+          img: require ('@/assets/img/index/content/carousel/10.jpg')
+        },
+        {
+          img: require ('@/assets/img/index/content/carousel/11.jpg')
+        },
+        {
+          img: require ('@/assets/img/index/content/carousel/12.jpg')
+        },
+      ]
     }
   },
   mounted() {
@@ -54,8 +55,17 @@ export default {
       return {
         transform: this.transform
       }
+    },
+    goPost(path) {
+      this.$router.replace({path: "/posts/"+path+"/"})
     }
-  }
+  } ,
+  created() {
+    selectByPage(null,null,null,null,null,null,null,1,4).then( res => {
+      // console.log(res)
+      this.posts = res.obj
+    })
+  },
 }
 </script>
 
@@ -65,7 +75,7 @@ export default {
   max-width: 90%;
   margin: 4rem auto;
   border-radius: 1rem;
-  /*overflow: hidden;*/
+  overflow: hidden;
   /*background: white;*/
   z-index: -1;
   transition: .8s;

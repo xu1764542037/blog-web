@@ -27,7 +27,7 @@ export default {
         if (top <= 1) {
           clearInterval(timeTop);
         }
-      }, 10);
+      }, .1);
     }
   }
 }

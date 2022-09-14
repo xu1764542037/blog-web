@@ -45,7 +45,7 @@ export default {
     return {
       page: {
         name: "",
-        img: 'http://106.15.38.204:8688/blog/note/assets/2021102821403347eb4ff5bf494d6a85795f3554c4ce6f.jpeg',
+        // img: 'http://106.15.38.204:8188/blog/note/assets/2021102821403347eb4ff5bf494d6a85795f3554c4ce6f.jpeg',
         textNum: "700",
         seeTime: "3",
         seeNum: "230",
@@ -60,7 +60,8 @@ export default {
 .posts-head {
   position: relative;
   width: 100%;
-  height: 43vh;
+  height: 42vh;
+  border: 0 solid;
   background-repeat: no-repeat;
   -webkit-transition: all .5s;
   -moz-transition: all .5s;
@@ -69,19 +70,21 @@ export default {
   transition: all .5s;
   color: #EFEDEC;
   overflow-x: hidden;
+  background: rgba(0,0,0,.3);
   /*background-image: url("../../../assets/img/posts/head/19.jpeg");*/
   /*background-size: cover;*/
   /*object-fit: cover;*/
   /*background-position: center center;*/
 }
 
-.posts-head>img {
-  height: 43vh;
-  width: 100%;
-  object-fit: cover;
-  position: absolute;
-  pointer-events: none;
-}
+/*.posts-head>img {*/
+/*  border: 0 solid;*/
+/*  height: 42vh;*/
+/*  width: 100%;*/
+/*  object-fit: cover;*/
+/*  position: absolute;*/
+/*  pointer-events: none;*/
+/*}*/
 
 .page-info {
   position: absolute;

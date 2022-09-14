@@ -93,7 +93,7 @@ export default {
       }
     })
 
-    selectByPage(this.currentPage,this.rowAccount).then(res => {
+    selectByPage(null,null,null,null,null,null,null,this.currentPage,this.rowAccount).then(res => {
       // console.log(res);
       if (res.obj === null ) {
         this.posts = [];
@@ -101,7 +101,6 @@ export default {
         this.posts = res.obj;
       }
     })
-
   },
 }
 </script>

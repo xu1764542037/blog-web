@@ -30,9 +30,8 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url("../../assets/img/bg/45.jpg") center 0 no-repeat;
+  background: url("../../assets/img/bg/54_xiu.jpg") center 0 no-repeat;
   background-size: cover;
   overflow-x: hidden;
-
 }
 </style>

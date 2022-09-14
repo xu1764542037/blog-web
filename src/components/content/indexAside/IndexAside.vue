@@ -3,10 +3,10 @@
     <phone></phone>
     <div class="layout">
       <update></update>
-<!--      <new-comment></new-comment>-->
+      <new-comment></new-comment>
       <classify></classify>
       <Label></Label>
-<!--      <history></history>-->
+      <history></history>
       <census></census>
     </div>
   </div>

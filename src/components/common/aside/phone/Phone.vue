@@ -117,7 +117,12 @@ export default {
 
     // 滚动条的获取
     window.addEventListener('scroll', this.handleScrollx, true)
+    // console.log(this.$refs.obtainTop.getBoundingClientRect().top)
+    if (this.$refs.obtainTop.getBoundingClientRect().top < 900 ) {
+      this.marginLeft = "0"
+    }
   },
+
   destroyed () {
     window.removeEventListener('scroll', this.handleScrollx, true)
   },

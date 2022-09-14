@@ -141,7 +141,7 @@ export default {
             },
             {
               name: "分类",
-              url: "/style",
+              url: "/categories",
               img: require('@/assets/img/index/menu/style.svg'),
             },
             {

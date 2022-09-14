@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <router-view/>
-    <main-nav-bar v-show="navShow"></main-nav-bar>
-    <web-bg v-show="bgShow"></web-bg>
-    <wave-item></wave-item>
-<!--    <slide></slide>-->
+    <transition :name="transitionName">
+      <router-view/>
+    </transition>
+      <main-nav-bar v-show="navShow"></main-nav-bar>
+      <web-bg v-show="bgShow"></web-bg>
+      <wave-item></wave-item>
+      <!--    <slide></slide>-->
   </div>
 </template>
 
 <script>
 import MainNavBar from "components/content/mainNavbar/MainNavBar";
 import WebBg from "@/views/webBg/WebBg";
-
 
 import Slide from "@/components/common/special/slide/Slide";
 
@@ -29,9 +30,22 @@ export default {
   data() {
     return {
       navShow:true,
-      bgShow: true
+      bgShow: true,
+      transitionName:''
     }
   },
+
+  watch: {//使用watch 监听$router的变化
+    $route(to, from) {
+      //如果to索引大于from索引,判断为前进状态,反之则为后退状态
+      if (to.meta.index > from.meta.index) {
+        //设置动画名称
+        this.transitionName = 'slide-left';
+      } else {
+        this.transitionName = 'slide-right';
+      }
+    }
+  }
 }
 </script>
 
@@ -100,5 +114,37 @@ export default {
     border-radius: 0;
     background: rgba(0,0,0,0.1);
   }
+
+  /*
+    过渡动画
+  */
+  .slide-right-enter-active,
+  .slide-right-leave-active,
+  .slide-left-enter-active,
+  .slide-left-leave-active {
+    will-change: transform;
+    transition: all 1000ms;
+    position: absolute;
+  }
+  .slide-right-enter {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  .slide-right-leave-active {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  .slide-left-enter {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  .slide-left-leave-active {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  /*font-family: english,sans-serif;*/
+  /*font-family: chinese,sans-serif;*/
+
 
 </style>

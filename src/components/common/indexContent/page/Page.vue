@@ -52,6 +52,9 @@ export default {
   mounted() {
     // 滚动条的获取
     window.addEventListener('scroll', this.handleScrollx, true)
+    if (this.$refs.obtainTop.getBoundingClientRect().top<900 && this.$refs.obtainTop.getBoundingClientRect().top>-100) {
+      this.transform = "scale(1)"
+    }
   },
   destroyed () {
     window.removeEventListener('scroll', this.handleScrollx, true)
@@ -71,6 +74,7 @@ export default {
       this.$router.push({path: "/posts/"+this.page.id+"/"})
     }
   }
+
 }
 </script>
 
@@ -83,14 +87,13 @@ export default {
   margin: 4rem auto;
   border-radius: 1rem;
   display: flex;
-  transition: .8s;
+  transition: 1s;
 }
 
 
 .page:hover {
   box-shadow: .2rem .2rem 2rem black;
   background: rgba(255,255,255,.7);
-
 }
 
 .page-img-box {

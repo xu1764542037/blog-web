@@ -17,13 +17,16 @@ export default {
 #article-head {
   position: relative;
   width: 100%;
-  height: 45vh;
-  background-image: url("../../../assets/img/article/head/15.jpg");
-  background-position: center center;
+  height: 40vh;
+  /*background-image: url("../../../assets/img/article/head/15.jpg");*/
+  /*background-position: center center;*/
+  /*background-repeat: no-repeat;*/
+
+  background: rgba(0,0,0,.3);
+
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  background-repeat: no-repeat;
   -webkit-transition: all .5s;
   -moz-transition: all .5s;
   -o-transition: all .5s;
@@ -39,7 +42,7 @@ export default {
   text-align: center;
   font-size: 4.8rem;
   color: #EFEDEC;
-  line-height: 9rem;
+  line-height: 2rem;
 }
 
 .title-chinese {
@@ -48,8 +51,8 @@ export default {
 .title-english {
   position: relative;
   font-family: english,sans-serif;
-  top: -.5rem;
-  font-size: 4.4rem;
+  top: -.8rem;
+  font-size: 3.15rem;
 
 }
 </style>
